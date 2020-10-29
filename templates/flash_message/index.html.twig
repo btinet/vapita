@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FlashMessage index{% endblock %}
+
+{% block body %}
+    <h1>FlashMessage index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Color</th>
+                <th>Path</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for flash_message in flash_messages %}
+            <tr>
+                <td>{{ flash_message.id }}</td>
+                <td>{{ flash_message.title }}</td>
+                <td>{{ flash_message.color }}</td>
+                <td>{{ flash_message.path }}</td>
+                <td>
+                    <a href="{{ path('flash_message_show', {'id': flash_message.id}) }}">show</a>
+                    <a href="{{ path('flash_message_edit', {'id': flash_message.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('flash_message_new') }}">Create new</a>
+{% endblock %}

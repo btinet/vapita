@@ -1,0 +1,100 @@
+<nav class="global-nav py-1 fit" id="global_nav">
+    <div class="container">
+        <div class="global_nav_items">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="#" class="nav-link item-sm-only global-nav-toggle pl-0"><i class="ti ti-menu"></i></a>
+                <a href="{{ path('app_index') }}" class="navbar-brand">Vapita</a>
+                <div class="d-flex flex-md-fill justify-content-between align-items-center">
+                    <div class="d-flex justify-content-end align-items-center flex-fill hide-on-search">
+                        {% for item in main_menu %}
+                            {% if item.isCategory %}
+                                {% set url = path('app_show_category', {'category_slug': item.category.slug}) %}
+                            {% else %}
+                                {% set url = path(item.route) %}
+                            {% endif %}
+                            {% if item.category is not null %}
+                                {% if item.category.slug == current_main_menu %}
+                                    {% set active = 'active' %}
+                                {% else %}
+                                    {% set active = '' %}
+                                {% endif %}
+                            {% endif %}
+                            <a href="{{ url }}" class="nav-link item-sm-hide {{ active }}">{{ item.title }}</a>
+                        {% endfor %}
+                    </div>
+                    <a href="#" class="nav-link item-sm-only"></a>
+                    <div class="item-sm-hide d-none flex-fill show-on-search px-0" id="global_nav_search_input">
+                        <form class="" method="post">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <input type="search" class="form-control" id="search_global" name="search" placeholder="Suchen">
+                                <label for="search_global"></label>
+                            </div>
+                        </form>
+                    </div>
+                    <a href="#" class="nav-link nav-link-close show-on-search global_nav_search py-auto pr-0"><i class="ti ti-close"></i></a>
+                    <a href="#" class="nav-link hide-on-search item-sm-hide global_nav_search py-auto pr-0"><i class="ti ti-search"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="global-nav-sub-wrapper d-none" id="global_nav_sub">
+            <div class="nav flex-column py-2">
+                <form class="" method="post">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <label for="search" class="flex-fill">
+                            <input type="search" class="form-control" id="search" name="search" placeholder="Suchen">
+                        </label>
+                        <a href="#" class="nav-link show-on-search pr-0" id="search_close"><i class="ti ti-close"></i></a>
+                    </div>
+                </form>
+                <div class="global_nav_search_results d-none py-3">
+                    <div class="card">
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <h5 class="text-primary">Color system</h5>
+                                <p class="mb-0">Represent colors using built-in or custom formats, and give users options for selecting and applying colors.</p>
+                                <span class="badge badge-light text-muted text-uppercase font-weight-normal">components</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <h5 class="text-primary">Color system</h5>
+                                <p class="mb-0">Represent colors using built-in or custom formats, and give users options for selecting and applying colors.</p>
+                                <span class="badge badge-light text-muted text-uppercase font-weight-normal">components</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <h5 class="text-primary">Color system</h5>
+                                <p class="mb-0">Represent colors using built-in or custom formats, and give users options for selecting and applying colors.</p>
+                                <span class="badge badge-light text-muted text-uppercase font-weight-normal">components</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <h5 class="text-primary">Color system</h5>
+                                <p class="mb-0">Represent colors using built-in or custom formats, and give users options for selecting and applying colors.</p>
+                                <span class="badge badge-light text-muted text-uppercase font-weight-normal">components</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <h5 class="text-primary">Color system</h5>
+                                <p class="mb-0">Represent colors using built-in or custom formats, and give users options for selecting and applying colors.</p>
+                                <span class="badge badge-light text-muted text-uppercase font-weight-normal">components</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="global_nav_items vertical-menu">
+                    {% for item in main_menu %}
+                        {% if item.isCategory %}
+                            {% set url = path('app_show_category', {'category_slug': item.category.slug}) %}
+                        {% else %}
+                            {% set url = path(item.route) %}
+                        {% endif %}
+                        {% if item.category is not null %}
+                            {% if item.category.slug == current_main_menu %}
+                                {% set active = 'active' %}
+                            {% else %}
+                                {% set active = '' %}
+                            {% endif %}
+                        {% endif %}
+                        <a href="{{ url }}" class="nav-link {{ active }}">{{ item.title }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

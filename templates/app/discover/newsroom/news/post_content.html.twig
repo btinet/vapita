@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col">
+        <h3 class="h3">{{ post.title }}</h3>
+        <p>{{ post.description }}</p>
+        <p>{{ post.created|date('d.m.Y') }}</p>
+        {% if post.imageName is not empty %}
+            <img
+                src="{{ vich_uploader_asset(post)|imagine_filter('story_post_image') }}"
+                alt="{{ post.title }}"
+                class="img-fluid rounded"
+            >
+        {% endif %}
+        <div class="mb-3"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        {{ post.content|raw }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        {{ include('app/post_media.html.twig') }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+            {{ include('app/post_navigator.html.twig') }}
+            {{ include('app/post_comments.html.twig') }}
+    </div>
+</div>
+
+

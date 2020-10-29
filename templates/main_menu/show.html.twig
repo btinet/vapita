@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MainMenu{% endblock %}
+
+{% block body %}
+    <h1>MainMenu</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ main_menu.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ main_menu.title }}</td>
+            </tr>
+            <tr>
+                <th>MetaTitle</th>
+                <td>{{ main_menu.metaTitle }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ main_menu.description }}</td>
+            </tr>
+            <tr>
+                <th>MetaDescription</th>
+                <td>{{ main_menu.metaDescription }}</td>
+            </tr>
+            <tr>
+                <th>IsCategory</th>
+                <td>{{ main_menu.isCategory ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('main_menu_index') }}">back to list</a>
+
+    <a href="{{ path('main_menu_edit', {'id': main_menu.id}) }}">edit</a>
+
+    {{ include('main_menu/_delete_form.html.twig') }}
+{% endblock %}

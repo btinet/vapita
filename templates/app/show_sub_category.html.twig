@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block main_menu %}
+    {{ include('app/mainmenu.html.twig') }}
+{% endblock %}
+
+{% block body %}
+    <section class="py-3">
+    </section>
+    <section class="fit py-5 mt-3">
+        <div class="container">
+            <div class="row">
+                {% for post in current_category.posts %}
+                <div class="col-12 col-md-6">
+                    <h4 class="text-primary">{{ post.title|trans }}</h4>
+                    <p class="lead">{{ post.description }}</p>
+                    <a
+                        href="{{ path('app_show_post', {'category_slug': post.category, 'post_slug': post.slug}) }}"
+                        class="btn btn-link"
+                    >
+                        Weiterlesen <i class="fi-arrow-right"></i>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="fit py-5 mt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h3 class="">{{ current_category.title|trans }}</h3>
+                    <p>{{ current_category.description }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% for category in sub_categories %}
+    <section class="fit py-5 mt-3 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h4 class="">{{ category.title }}</h4>
+                    <p>{{ category.description }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+
+{% endblock %}

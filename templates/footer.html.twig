@@ -1,0 +1,29 @@
+<div class="row py-3 small text-muted">
+    {% for item in main_menu %}
+        <div class="col-12 col-md">
+            <ul class="list-unstyled">
+                <li class="font-weight-bold">
+                    {% if item.isCategory %}
+                        {% set url = path('app_show_category', {'category_slug': item.category.slug}) %}
+                    {% else %}
+                        {% set url = path(item.route) %}
+                    {% endif %}
+                    <a href="{{ url }}" class="text-muted">{{ item.title }}</a>
+                </li>
+                {% if item.isCategory %}
+                    {% for entry in item.category.categories %}
+                        <li>
+                            <a
+                                href="{{ path('app_show_sub_category', {
+                                    'category_slug': item.category.slug,
+                                    'sub_category_slug': entry.slug
+                                }) }}"
+                                class="text-muted"
+                            >{{ entry.title }}</a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    {% endfor %}
+</div>

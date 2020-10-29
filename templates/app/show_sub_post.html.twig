@@ -1,0 +1,26 @@
+{% extends 'app.html.twig' %}
+
+{% block main_menu %}
+    {{ parent() }}
+    {{ include('app/local_menu.html.twig') }}
+{% endblock %}
+
+{% block body_content %}
+    <section class="py-3">
+    </section>
+    <section class="fit py-5 mt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h3 class="">{{ current_post.title }}</h3>
+                    <p>{{ current_post.description }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ current_post.content|raw }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

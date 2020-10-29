@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MainMenu index{% endblock %}
+
+{% block body %}
+    <h1>MainMenu index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>MetaTitle</th>
+                <th>Description</th>
+                <th>MetaDescription</th>
+                <th>IsCategory</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for main_menu in main_menus %}
+            <tr>
+                <td>{{ main_menu.id }}</td>
+                <td>{{ main_menu.title }}</td>
+                <td>{{ main_menu.metaTitle }}</td>
+                <td>{{ main_menu.description }}</td>
+                <td>{{ main_menu.metaDescription }}</td>
+                <td>{{ main_menu.isCategory ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('main_menu_show', {'id': main_menu.id}) }}">show</a>
+                    <a href="{{ path('main_menu_edit', {'id': main_menu.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('main_menu_new') }}">Create new</a>
+{% endblock %}

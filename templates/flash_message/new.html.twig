@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New FlashMessage{% endblock %}
+
+{% block body %}
+    <h1>Create new FlashMessage</h1>
+
+    {{ include('flash_message/_form.html.twig') }}
+
+    <a href="{{ path('flash_message_index') }}">back to list</a>
+{% endblock %}

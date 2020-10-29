@@ -1,0 +1,56 @@
+{% extends 'app.html.twig' %}
+
+{% block main_menu %}
+        {{ parent() }}
+        {{ include('app/local_menu.html.twig') }}
+{% endblock %}
+
+{% block body_content %}
+        <section class="py-3">
+        </section>
+        <section class="fit py-5 mt-3">
+                <div class="container">
+                        <div class="row">
+                                <div class="col">
+                                        <h3 class="">{{ current_post.title }}</h3>
+                                        <p>{{ current_post.description }}</p>
+                                </div>
+                        </div>
+                        <div class="row">
+                                <div class="col">
+                                        {{ current_post.content|raw }}
+                                </div>
+                        </div>
+                        <div class="row">
+                                <div class="col">
+                                        <h4>Eigener Inhalt für diesen Post.</h4>
+                                        <p>Ich bin <code>app/design/overview/index.html.twig</code>.</p>
+                                </div>
+                        </div>
+                </div>
+        </section>
+        <section class="fit py-5 mt-3 bg-light" id="child_posts">
+                <div class="container">
+                        <div class="row">
+                                {% for post in current_sub_category.posts %}
+                                        {% if not post.islocalentry %}
+                                                <div class="col-12 mb-3 py-5">
+                                                        <h5 class="">{{ post.title }}</h5>
+                                                        <p>{{ post.description }}</p>
+                                                        <a
+                                                                href="{{ path('app_show_post', {
+                                                                        'category_slug': current_category.slug,
+                                                                        'sub_category_slug': current_sub_category.slug,
+                                                                        'post_slug': post.slug
+                                                                }) }}"
+                                                                class=""
+                                                                >
+                                                                {{ post.linktitle }}
+                                                        </a>
+                                                </div>
+                                        {% endif %}
+                                {% endfor %}
+                        </div>
+                </div>
+        </section>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ImageGallery{% endblock %}
+
+{% block body %}
+    <h1>ImageGallery</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ image_gallery.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ image_gallery.title }}</td>
+            </tr>
+            <tr>
+                <th>MetaTitle</th>
+                <td>{{ image_gallery.metaTitle }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ image_gallery.description }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ image_gallery.slug }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{{ image_gallery.created ? image_gallery.created|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{{ image_gallery.updated ? image_gallery.updated|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('image_gallery_index') }}">back to list</a>
+
+    <a href="{{ path('image_gallery_edit', {'id': image_gallery.id}) }}">edit</a>
+
+    {{ include('image_gallery/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit FlashMessage{% endblock %}
+
+{% block body %}
+    <h1>Edit FlashMessage</h1>
+
+    {{ include('flash_message/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('flash_message_index') }}">back to list</a>
+
+    {{ include('flash_message/_delete_form.html.twig') }}
+{% endblock %}

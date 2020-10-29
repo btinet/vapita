@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New PostFile{% endblock %}
+
+{% block body %}
+    <h1>Create new PostFile</h1>
+
+    {{ include('post_file/_form.html.twig') }}
+
+    <a href="{{ path('post_file_index') }}">back to list</a>
+{% endblock %}

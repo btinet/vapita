@@ -1,0 +1,29 @@
+{% extends 'app.html.twig' %}
+
+{% block main_menu %}
+    {{ parent() }}
+    {{ include('app/local_menu.html.twig') }}
+{% endblock %}
+
+{% block body_content %}
+    <section class="py-3">
+    </section>
+    <section class="fit py-5 mt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 d-none d-md-block">
+                    {{ include('app/post_content_table.html.twig') }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {# Inhalt des Posts #}
+                    {% if current_sub_post is defined %}
+                        {% set post = current_sub_post %}
+                    {% else %}
+                        {% set post = current_post %}
+                    {% endif %}
+                    {{ include('app/post_content.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
