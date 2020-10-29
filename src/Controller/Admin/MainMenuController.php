@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\MainMenu;
 use App\Form\MainMenuType;
@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/main/menu")
+ * @Route("/admin/main/menu")
  */
 class MainMenuController extends AbstractController
 {

@@ -1,40 +1,32 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}Image index{% endblock %}
 
-{% block body %}
+{% block content %}
     <h1>Image index</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Image</th>
                 <th>Title</th>
-                <th>MetaTitle</th>
-                <th>Description</th>
                 <th>ImageName</th>
-                <th>ImageSize</th>
-                <th>UpdatedAt</th>
-                <th>Slug</th>
-                <th>Created</th>
-                <th>Updated</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for image in images %}
             <tr>
-                <td>{{ image.id }}</td>
-                <td>{{ image.title }}</td>
-                <td>{{ image.metaTitle }}</td>
-                <td>{{ image.description }}</td>
-                <td>{{ image.imageName }}</td>
-                <td>{{ image.imageSize }}</td>
-                <td>{{ image.updatedAt ? image.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ image.slug }}</td>
-                <td>{{ image.created ? image.created|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ image.updated ? image.updated|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
+                <td class="align-middle">{{ image.id }}</td>
+                <td><img class="img-fluid" alt="{{ image.title }}" src="{{ vich_uploader_asset(image)| imagine_filter('admin_small') }}"></td>
+                <td class="align-middle">{{ image.title }}</td>
+                <td class="align-middle"><code>
+                    {{ app.request.getSchemeAndHttPHost() }}/images/galleries/{{ image.imageName }}
+                    </code>
+                </td>
+
+                <td class="align-middle">
                     <a href="{{ path('image_show', {'id': image.id}) }}">show</a>
                     <a href="{{ path('image_edit', {'id': image.id}) }}">edit</a>
                 </td>

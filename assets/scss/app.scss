@@ -1,0 +1,303 @@
+
+
+/*
+========================================================================================================================
+Table of Content
+========================================================================================================================
+Colors
+Fonts
+CSS Framework
+Components
+========================================================================================================================
+*/
+
+// Colors
+//======================================================================================================================
+$systemBlue:	rgba(  0,122,255,1);
+$systemGreen:	rgba( 52,199, 89,1);
+$systemIndigo:	rgba( 88, 86,214,1);
+$systemOrange:	rgba(255,149,  0,1);
+$systemPink:	rgba(255, 45, 85,1);
+$systemPurple:	rgba(175, 82,222,1);
+$systemRed:	    rgba(255, 59, 48,1);
+$systemTeal:	rgba( 90,200,250,1);
+$systemYellow:	rgba(255,204,  0,1);
+
+$systemGray:	rgba(142,142,147,1);
+$systemGray2:	rgba(174,174,178,1);
+$systemGray3:	rgba(199,199,204,1);
+$systemGray4:	rgba(209,209,214,1);
+$systemGray5:	rgba(229,229,234,1);
+$systemGray6:	rgba(242,242,247,.8);
+
+$clear: 		rgba(  0,  0,  0,0);
+$full-black:	rgba( 8, 8, 12,1);
+$black:		    rgba( 54, 54, 54,1);
+$white:		    rgba(255,255,255,1);
+
+$body-bg:       lighten($systemGray6,3);
+$body-color:    rgba($black,.9);
+
+.bg-lighter{background-color: lighten($systemGray6,1)}
+
+$breadcrumb-bg: none;
+
+// Fonts
+//======================================================================================================================
+@import "fonts/ibm";
+
+// Body
+$font-family-sans-serif:      'IBM Plex Sans';
+$font-family-monospace:       'IBM Plex Mono';
+
+$font-size-base:              1rem;
+$font-weight-base:            300;
+$font-weight-bold:            400;
+$headings-font-weight:        $font-weight-base;
+$headings-color:              $black;
+$line-height-base:            1.4;
+
+html, body{
+  height: 100%;
+  min-height: 100%;
+}
+
+body{
+  letter-spacing: -.022em;
+  padding-top:48px;
+}
+
+.min-height-800{
+  min-height: 800px;
+}
+
+// Headings
+$headings-font-family:        'IBM Plex Sans';
+$headings-line-height:        1.2 !default;
+$headings-color:              null !default;
+
+@import "../fonts/foundation-icons/foundation-icons.css";
+@import "../fonts/themify-icons/themify-icons.css";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "~file-icon-vectors/dist/file-icon-classic.min.css";
+
+// Input Forms
+//======================================================================================================================
+
+$input-bg:                              rgba($white,.8);
+$input-disabled-bg:                     rgba($systemGray5,.8);
+$input-color:                           $body-color;
+$input-border-color:                    $systemGray6;
+
+
+// Component Settings
+//======================================================================================================================
+
+$component-active-bg:               rgba($systemGray5,.2);
+$input-btn-focus-width:             1px;
+$link-hover-color:                  $systemBlue;
+
+$border-color:                      $systemGray5;
+
+$border-radius:                     .3rem;
+$border-radius-lg:                  .3rem;
+$border-radius-sm:                  .2rem;
+$grid-gutter-width:                 2.5rem;
+$container-max-widths: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px
+);
+
+// Card Colors
+//======================================================================================================================
+
+$card-border-color:                 $input-border-color;
+
+  // List Group
+//======================================================================================================================
+$list-group-bg:                     rgba($white,.8);
+$list-group-hover-bg:               rgba($systemGray5,.1);
+$list-group-action-active-bg:       rgba($systemGray5,.2);
+$list-group-border-color:           $card-border-color;
+
+
+// CSS Framework
+//======================================================================================================================
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+$theme-colors: (
+        "primary":    $systemBlue,
+        "secondary":  $systemGray2,
+        "success":    $systemGreen,
+        "warning":    $systemOrange,
+        "danger":     $systemRed,
+        "info":       $systemTeal,
+        "light":      $systemGray6,
+        "dark":       $black,
+        "black":       $full-black,
+        "white":      $white,
+);
+
+$custom-control-indicator-checked-bg: map-get($theme-colors, 'primary');
+$custom-select-focus-border-color: map-get($theme-colors, 'primary');
+
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+.gutters-sm {
+  margin-right: -.2rem;
+  margin-left: -.2rem;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: .2rem;
+    padding-left: .2rem;
+  }
+}
+
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/jumbotron";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/media";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/toasts";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+@import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/spinners";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/print";
+
+// Components
+//======================================================================================================================
+
+
+@import "components/form_label_group";
+@import "components/nav";
+@import "components/footer";
+@import "components/flash_messages";
+@import "components/mobile";
+@import "components/lists";
+@import "~awesomplete/awesomplete.css";
+@import "~tablesorter/dist/css/theme.bootstrap_4.min.css";
+@import "~highlight.js/scss/darcula";
+@import "~fullpage.js/dist/fullpage.min.css";
+@import '~chocolat/dist/css/chocolat.css';
+.chocolat-wrapper .chocolat-bottom {
+  padding: 30px 60px !important;
+}
+.chocolat-overlay {
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  background-color: transparentize($white, .4) !important;
+  opacity: 1 !important;
+}
+
+.chocolat-center {
+  padding-left: env(safe-area-inset-left, 16px) !important;
+  padding-right:  env(safe-area-inset-right, 16px) !important;
+}
+
+.chocolat-close{
+  right: env(safe-area-inset-right, 0) !important;
+}
+.t-100{
+  top: 100px;
+}
+.chocolat-image{
+  img {
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -webkit-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -moz-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -o-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+  img:hover {
+    box-shadow: 0 4px 10px transparentize($systemGray,.6);
+    -webkit-box-shadow: 0 4px 10px transparentize($systemGray,.6);
+    -moz-box-shadow: 0 4px 10px transparentize($systemGray,.6);
+    -o-box-shadow: 0 4px 10px transparentize($systemGray,.6);
+
+  }
+}
+
+.form-light{
+  input, textarea, select{
+    background-color: $systemGray6!important;
+    border-color: $systemGray5;
+  }
+  input:focus, textarea:focus, select:focus{
+    background-color: lighten($systemGray6,2)!important;
+    border-color: $systemGray4;
+
+  }
+
+}
+
+
+
+form label.required:after
+{
+  color: $systemRed;
+  content: " *";
+}
+
+.lead-story{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgb(54,54,54);
+  background: linear-gradient(0deg, transparentize(#08080c,.1) 0%, rgba(54,54,54,0) 100%);
+  box-sizing: border-box;
+  padding-top: 3em;
+  h3{
+  }
+}
+
+.featured-story{
+  background-color: lighten($body-color,10);
+}
+
+.featured-post{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  .card-body{
+    background: rgb(54,54,54);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 30%, rgba(54,54,54,0.8) 80%, rgba(54,54,54,0) 100%);
+  }
+  p, h4{
+    text-shadow: 0 0 2px rgba(12,14,26,0.6);
+    color: $white;
+  }
+}
+
+.lead-story{
+  p, span{
+    text-shadow: 0 0 2px rgba(12,14,26,0.6);
+  }
+}

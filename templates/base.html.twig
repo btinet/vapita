@@ -1,12 +1,64 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1, maximum-scale=1">
+    <title>{% block title %}{{ controller_name ?? '' }} | {{ app_title ?? "n/a" }}{% endblock %}</title>
+    {% block opengraph %}{% endblock %}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
     </head>
-    <body>
+    <body class="d-flex flex-column flex-grow-0">
+
+        {% block header %}{% endblock %}
+
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+        {% block footer %}
+            <footer class="fit bg-light pt-3 pb-5 mt-auto">
+
+                    {% block footer_additional_content %}{% endblock %}
+                <div class="container">
+                    {{ include('footer.html.twig') }}
+                </div>
+            </footer>
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+
+                <script src="{{ asset('legacy/tinymce/tinymce.min.js') }}"></script>
+
+
+                <script type="text/javascript">
+                    tinymce.init({
+                        selector: '.tinymce',
+                        plugins: 'anchor table codesample media link image imagetools visualblocks code charmap lists',
+                        toolbar: 'codesample anchor link image visualblocks code charmap numlist bullist',
+                        codesample_languages: [
+                            { text: 'HTML/XML', value: 'markup' },
+                            { text: 'JavaScript', value: 'javascript' },
+                            { text: 'CSS', value: 'css' },
+                            { text: 'PHP', value: 'php' },
+                            { text: 'Ruby', value: 'ruby' },
+                            { text: 'Python', value: 'python' },
+                            { text: 'Java', value: 'java' },
+                            { text: 'C', value: 'c' },
+                            { text: 'C#', value: 'csharp' },
+                            { text: 'C++', value: 'cpp' },
+                            { text: 'Shell', value: 'shell' },
+                            { text: 'Bash', value: 'bash'}
+                        ],
+                        relative_urls : false,
+                        remove_script_host : true,
+                        document_base_url: '{{ app.request.getSchemeAndHttpHost() }}'
+                    });
+
+
+
+                </script>
+
+        {% endblock %}
     </body>
 </html>

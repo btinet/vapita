@@ -11,26 +11,49 @@
     <section class="fit py-5 mt-3">
         <div class="container">
             <div class="row">
-                {% if current_post.hasContentTable %}
-                    <div class="col-md-4 d-none d-md-block">
-                        <div class="position-sticky t-100">
-                            {{ include('app/post_content_table.html.twig') }}
-                        </div>
+                <div class="col-12 col-md-4">
+                    <div class="position-sticky t-100 bg-lighter rounded p-3 mb-5">
+                        <h6 class="mb-3">Tags filtern</h6>
+                        <hr>
+                        {% for tag in tags|sort((a, b) => a.title <=> b.title) %}
+                            {% set show_tag = false %}
+                            {% for post in current_post.posts %}
+                                {% if tag.title == post.tags.title %}{% set show_tag = true %}{% endif %}
+                            {% endfor %}
+                            {% if show_tag %}
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="filterbox custom-control-input" id="{{ tag.title }}" name="interest" value="{{ tag.title }}">
+                                <label class="custom-control-label" for="{{ tag.title }}">{{ tag.title }}</label>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                    <div class="col-12 col-md-8">
-                {% else %}
-                        <div class="col-12 col-md-8 offset-md-2">
-                {% endif %}
+
+                </div>
+                <div class="col-12 col-md-8">
                     {# Inhalt des Posts #}
                     {% if current_sub_post is defined %}
                         {% set post = current_sub_post %}
                     {% else %}
                         {% set post = current_post %}
                     {% endif %}
-                    {{ include('app/discover/newsroom/storys/post_content.html.twig') }}
+                    {{ include('app/discover/newsroom/news/post_content.html.twig') }}
                 </div>
             </div>
-
         </div>
     </section>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+        $('input').click(function () {
+            $('.tags').parent().hide();
+            $('input:checked').each(function () {
+                $('div.' + $(this).val()).parent().show();
+            });
+            if (!$('input:checked').length) $('.tags').parent().show();
+        })
+
+</script>
 {% endblock %}

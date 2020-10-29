@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\FlashMessage;
 use App\Form\FlashMessageType;
@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/flash/message")
+ * @Route("/admin/flash/message")
  */
 class FlashMessageController extends AbstractController
 {

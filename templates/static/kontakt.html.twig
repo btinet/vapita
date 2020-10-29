@@ -1,11 +1,16 @@
-{% extends 'admin.html.twig' %}
-
-{% block title %}New Contact{% endblock %}
-
-{% block body %}
-    <h1>Create new Contact</h1>
-
-    {{ include('contact/_form.html.twig') }}
-
-    <a href="{{ path('contact_index') }}">back to list</a>
-{% endblock %}
+<div class="row">
+    <div class="col-12 col-md-4 order-2 order-md-0">
+    </div>
+    <div class="col-12 col-md-8 order-1">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <h4 class="mb-3">Vapita Kontakt</h4>
+        <p>Du möchtest ein Angebot einholen, hast Fragen zu einem laufenden Projekt oder möchtest etwas loswerden?</p>
+        {{ include('contact/_form.html.twig') }}
+    </div>
+</div>

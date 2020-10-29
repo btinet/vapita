@@ -20,6 +20,8 @@ class PostFile
         return $this->title;
     }
 
+
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -95,9 +97,9 @@ class PostFile
     private $updated;
 
     /**
-     * @ORM\ManyToOne(targetEntity=BlogPost::class, inversedBy="postFiles")
+     * @ORM\ManyToOne(targetEntity=Post::class, inversedBy="postFiles")
      */
-    private $blogPost;
+    private $post;
 
     public function getId(): ?int
     {
@@ -207,14 +209,14 @@ class PostFile
         return $this->updated;
     }
 
-    public function getBlogPost(): ?BlogPost
+    public function getPost(): ?Post
     {
-        return $this->blogPost;
+        return $this->post;
     }
 
-    public function setBlogPost(?BlogPost $blogPost): self
+    public function setPost(?Post $post): self
     {
-        $this->blogPost = $blogPost;
+        $this->post = $post;
 
         return $this;
     }

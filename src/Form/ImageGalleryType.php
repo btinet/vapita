@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Image;
 use App\Entity\ImageGallery;
+use App\Entity\Post;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,10 +18,19 @@ class ImageGalleryType extends AbstractType
             ->add('title')
             ->add('metaTitle')
             ->add('description')
-            ->add('slug')
-            ->add('created')
-            ->add('updated')
             ->add('parent')
+            ->add('images', EntityType::class, [
+                'class' => Image::class,
+                'by_reference' => false,
+                'required' => false,
+                'multiple' => true
+            ])
+            ->add('posts', EntityType::class, [
+                'class' => Post::class,
+                'by_reference' => false,
+                'required' => false,
+                'multiple' => true
+            ])
         ;
     }
 

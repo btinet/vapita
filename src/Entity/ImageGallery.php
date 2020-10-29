@@ -57,9 +57,9 @@ class ImageGallery
     private $imageGalleries;
 
     /**
-     * @ORM\OneToMany(targetEntity=BlogPost::class, mappedBy="imageGallery")
+     * @ORM\OneToMany(targetEntity=Post::class, mappedBy="imageGallery")
      */
-    private $blogPosts;
+    private $posts;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
@@ -87,7 +87,7 @@ class ImageGallery
     {
         $this->images = new ArrayCollection();
         $this->imageGalleries = new ArrayCollection();
-        $this->blogPosts = new ArrayCollection();
+        $this->posts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -206,30 +206,30 @@ class ImageGallery
     }
 
     /**
-     * @return Collection|BlogPost[]
+     * @return Collection|Post[]
      */
-    public function getBlogPosts(): Collection
+    public function getPosts(): Collection
     {
-        return $this->blogPosts;
+        return $this->posts;
     }
 
-    public function addBlogPost(BlogPost $blogPost): self
+    public function addPost(Post $post): self
     {
-        if (!$this->blogPosts->contains($blogPost)) {
-            $this->blogPosts[] = $blogPost;
-            $blogPost->setImageGallery($this);
+        if (!$this->posts->contains($post)) {
+            $this->posts[] = $post;
+            $post->setImageGallery($this);
         }
 
         return $this;
     }
 
-    public function removeBlogPost(BlogPost $blogPost): self
+    public function removePost(Post $post): self
     {
-        if ($this->blogPosts->contains($blogPost)) {
-            $this->blogPosts->removeElement($blogPost);
+        if ($this->posts->contains($post)) {
+            $this->posts->removeElement($post);
             // set the owning side to null (unless already changed)
-            if ($blogPost->getImageGallery() === $this) {
-                $blogPost->setImageGallery(null);
+            if ($post->getImageGallery() === $this) {
+                $post->setImageGallery(null);
             }
         }
 

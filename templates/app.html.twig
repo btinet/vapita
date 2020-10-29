@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {% block main_menu %}
+        {{ include('app/mainmenu.html.twig') }}
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    {% block body_content %}{% endblock %}
+{% endblock %}
+
+{% block footer_additional_content %}
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb px-0 mb-0">
+            <li class="breadcrumb-item"><a href="{{ path('app_index') }}">Vapita</a></li>
+            {%- if current_category is defined -%}
+                <li class="breadcrumb-item">
+                    {%- if current_sub_category is defined -%}
+                    <a
+                            href="{{ path('app_show_category', {
+                                'category_slug': current_category.slug
+                            }) }}"
+                    >
+                        {{ current_category.title|trans }}
+                    </a>
+                    {%- else  -%}
+                        {{ current_category.title|trans }}
+                    {%- endif  -%}
+                </li>
+            {%- endif -%}
+            {%- if current_sub_category is defined -%}
+                <li class="breadcrumb-item">
+                    {%- if current_post is defined -%}
+                    <a
+                            href="{{ path('app_show_sub_category', {
+                                'category_slug': current_category.slug,
+                                'sub_category_slug': current_sub_category.slug
+                            }) }}"
+                    >
+                        {{ current_sub_category.title|trans }}
+                    </a>
+                    {%- else  -%}
+                        {{ current_sub_category.title|trans }}
+                    {%- endif  -%}
+                </li>
+            {%- endif -%}
+            {%- if current_post is defined -%}
+                <li class="breadcrumb-item">
+                    {%- if current_sub_post is defined -%}
+                    <a
+                            href="{{ path('app_show_post', {
+                                'category_slug': current_category.slug,
+                                'sub_category_slug': current_sub_category.slug,
+                                'post_slug': current_post.slug
+                            }) }}"
+                    >
+                        {{ current_post.title|trans }}
+                    </a>
+                    {%- else  -%}
+                        {{ current_post.title|trans }}
+                    {%- endif  -%}
+                </li>
+            {%- endif -%}
+            {%- if current_sub_post is defined -%}
+                <li class="breadcrumb-item active" aria-current="page">{{ current_sub_post.title|trans }}</li>
+            {%- endif -%}
+        </ol>
+    </nav>
+</div>
+
+    <div class="d-none d-sm-block">
+        {{ include('sitemap.html.twig') }}
+    </div>
+    <div class="d-block d-sm-none">
+        {{ include('sitemap.accordion.html.twig') }}
+    </div>
+{% endblock %}
+

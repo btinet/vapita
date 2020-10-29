@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tag
 {
+    public function __toString()
+    {
+        return $this->title;
+    }
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

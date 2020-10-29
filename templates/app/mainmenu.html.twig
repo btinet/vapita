@@ -1,0 +1,91 @@
+{% if current_sub_category is defined %}
+    {% if current_sub_category.isDarkLocalMenu %}
+        {% set global_nav_dark = 'bg-dark text-white global-nav-dark' %}
+    {% endif %}
+{% endif %}
+<nav class="global-nav {{ global_nav_dark|default('') }} py-1 fit" id="global_nav">
+    <div class="container">
+        <div class="global_nav_items">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="javascript:void(0);" class="nav-link item-sm-only global-nav-toggle pl-0"><i class="ti ti-menu"></i></a>
+                <a href="{{ path('app_index') }}" class="navbar-brand">Vapita</a>
+                <div class="d-flex flex-md-fill justify-content-between align-items-center">
+                    <div class="d-flex justify-content-end align-items-center flex-fill hide-on-search">
+                        {% for item in main_menu %}
+                            {% if item.isCategory %}
+                                {% set url = path('app_show_category', {'category_slug': item.category.slug}) %}
+                            {% else %}
+                                {% set url = path(item.route) %}
+                            {% endif %}
+                            {% if item.category is not null %}
+                                {% if item.category.slug == current_main_menu %}
+                                    {% set active = 'active' %}
+                                {% else %}
+                                    {% set active = '' %}
+                                {% endif %}
+                            {% endif %}
+                            <a href="{{ url }}" class="nav-link item-sm-hide {{ active }}">{{ item.title }}</a>
+                        {% endfor %}
+                    </div>
+                    <a href="#" class="nav-link item-sm-only"></a>
+                    <div class="item-sm-hide d-none flex-fill show-on-search px-0" id="global_nav_search_input">
+                        <form  action="{{ path('app_show_post', {
+                            'category_slug': 'discover',
+                            'sub_category_slug': 'suche',
+                            'post_slug': 'vapita-durchsuchen'
+                        }) }}" method="post">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <input type="search" class="form-control" id="search_global" name="search" placeholder="Suchen">
+
+                                <label for="search_global">
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                    <a href="javascript:void(0);" class="nav-link nav-link-close show-on-search global_nav_search py-auto pr-0" style="padding-bottom:4px"><i class="ti ti-close"></i></a>
+                    <a href="javascript:void(0);" class="nav-link hide-on-search item-sm-hide global_nav_search py-auto pr-0" style="padding-bottom:4px"><i class="ti ti-search"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="global-nav-sub-wrapper d-none" id="global_nav_sub">
+            <div class="nav flex-column py-2">
+                <form class="quick-search needs-validation" method="post" action="{{ path('api_quick_search') }}" novalidate>
+                    <div class="d-flex justify-content-between align-items-center">
+
+                            <input type="search" class="form-control" id="search" name="search" placeholder="Suchen" required>
+                        <label for="search" class="flex-fill">
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true" style="position: absolute;margin-top:-3px; margin-left: -60px"></span>
+
+                        </label>
+                        <a href="javascript:void(0);" class="nav-link show-on-search pr-0" id="search_close" style="padding-bottom:4px"><i class="ti ti-close"></i></a>
+                    </div>
+                </form>
+                <div class="global_nav_search_results d-none py-3">
+                    <div class="search-result-wrapper">
+                    <div class="card">
+                        <div class="list-group list-group-flush" id="quick-search-results">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="global_nav_items vertical-menu">
+                    {% for item in main_menu %}
+                        {% if item.isCategory %}
+                            {% set url = path('app_show_category', {'category_slug': item.category.slug}) %}
+                        {% else %}
+                            {% set url = path(item.route) %}
+                        {% endif %}
+                        {% if item.category is not null %}
+                            {% if item.category.slug == current_main_menu %}
+                                {% set active = 'active' %}
+                            {% else %}
+                                {% set active = '' %}
+                            {% endif %}
+                        {% endif %}
+                        <a href="{{ url }}" class="nav-link {{ active }}">{{ item.title }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

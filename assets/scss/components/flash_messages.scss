@@ -1,8 +1,43 @@
-*{
-  -webkit-tap-highlight-color: transparent;
+.flash-message-primary{
+  background-color: map-get($theme-colors, 'primary');
+  a{
+    color: map-get($theme-colors, 'white');
+  }
+  a:hover{
+    color: map-get($theme-colors, 'white');
+    text-decoration: underline;
+  }
 }
 
-.fit {
-  padding-left: env(safe-area-inset-left, 16px);
-  padding-right:  env(safe-area-inset-right, 16px);
+.flash-message-success{
+  background-color: map-get($theme-colors, 'success');
+  a{
+    color: map-get($theme-colors, 'white');
+  }
+  a:hover{
+    color: map-get($theme-colors, 'white');
+    text-decoration: underline;
+  }
+}
+
+.flash-message-warning{
+  background-color: map-get($theme-colors, 'warning');
+  a{
+    color: map-get($theme-colors, 'white');
+  }
+  a:hover{
+    color: map-get($theme-colors, 'white');
+    text-decoration: underline;
+  }
+}
+
+.flash-message-danger{
+  background-color: map-get($theme-colors, 'danger');
+  a{
+    color: map-get($theme-colors, 'white');
+  }
+  a:hover{
+    color: map-get($theme-colors, 'white');
+    text-decoration: underline;
+  }
 }

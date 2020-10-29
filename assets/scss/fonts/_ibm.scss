@@ -1,3 +1,9 @@
+// IBM Plex
+//======================================================================================================================
+
+// Font Prefix
 $font-prefix: "~@ibm/plex";
 
-@import "~@ibm/plex/scss/ibm-plex.scss";
+// Font Collection
+@import "~@ibm/plex/scss/sans/index";
+@import "~@ibm/plex/scss/mono/index";

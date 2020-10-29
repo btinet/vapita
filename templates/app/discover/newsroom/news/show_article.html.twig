@@ -11,17 +11,49 @@
     <section class="fit py-5 mt-3">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-4">
-                    <h6>Meldungen filtern</h6>
-                </div>
-                <div class="col-12 col-md-8">
+                <div class="col-12 col-md-8 offset-md-2">
                     {# Inhalt des Posts #}
                     {% if current_sub_post is defined %}
                         {% set post = current_sub_post %}
                     {% else %}
                         {% set post = current_post %}
                     {% endif %}
-                    {{ include('app/discover/newsroom/news/post_content.html.twig') }}
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="h3">{{ post.title }}</h3>
+                            <p>{{ post.description }}</p>
+                            <p>{{ post.created|date('d.m.Y') }}</p>
+                            {% if post.imageName is not empty %}
+                                <img
+                                        src="{{ vich_uploader_asset(post)|imagine_filter('story_post_image') }}"
+                                        alt="{{ post.title }}"
+                                        class="img-fluid rounded"
+                                >
+                            {% endif %}
+                            <div class="mb-3"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ post.content|raw }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            {{ include('app/post_media.html.twig') }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            {{ include('app/post_navigator.html.twig') }}
+                            {{ include('app/post_comments.html.twig') }}
+                        </div>
+                    </div>
+
+
+
                 </div>
             </div>
         </div>

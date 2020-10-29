@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\MainMenu;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,7 +19,12 @@ class MainMenuType extends AbstractType
             ->add('description')
             ->add('metaDescription')
             ->add('isCategory')
-            ->add('category')
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'placeholder' => 'Kategorie wählen',
+                'required' => false
+            ])
+            ->add('route')
         ;
     }
 

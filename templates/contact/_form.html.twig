@@ -1,4 +1,55 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {
+    'attr' : {
+        'novalidate' : 'novalidate',
+        'class' : 'needs-validation form-lighter'
+    }
+}) }}
+<div class="mb-3">
+    {{ form_widget(form.title) }}
+    {{ form_help(form.title) }}
+</div>
+<div class="mb-3">
+    <div style="margin-left: .75rem" class="d-none">
+        {{ form_label(form.content) }}
+    </div>
+    {{ form_widget(form.content) }}
+
+    {{ form_help(form.content) }}
+</div>
+<hr>
+<div class="form-label-group">
+    {{ form_widget(form.company) }}
+    {{ form_label(form.company) }}
+    {{ form_help(form.company) }}
+</div>
+<div class="row">
+    <div class="col-12 col-md-6">
+        <div class="form-label-group">
+            {{ form_widget(form.firstname) }}
+            {{ form_label(form.firstname) }}
+            {{ form_help(form.firstname) }}
+        </div>
+    </div>
+    <div class="col-12 col-md-6">
+        <div class="form-label-group">
+            {{ form_widget(form.lastname) }}
+            {{ form_label(form.lastname) }}
+            {{ form_help(form.lastname) }}
+        </div>
+    </div>
+</div>
+<div class="form-label-group">
+    {{ form_widget(form.email) }}
+    {{ form_label(form.email) }}
+    {{ form_help(form.email) }}
+</div>
+{{ form_row(form.address) }}
+<button class="btn btn-primary btn-block">{{ button_label|default('Senden') }}</button>
+
+<datalist id="state_list">
+    {% for state in states %}
+        <option value="{{ state.name }}"></option>
+    {% endfor %}
+</datalist>
+
 {{ form_end(form) }}

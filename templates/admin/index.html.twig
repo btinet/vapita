@@ -1,20 +1,57 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}Hello AdminController!{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/benja/Documents/vapita/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/benja/Documents/vapita/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
-    </ul>
-</div>
+{% block content %}
+    <h3>Administration</h3>
+    <div class="row">
+        <div class="col">
+            <div class="list-group list-group-flush">
+                <a href="{{ path('category_index') }}" class="list-group-item list-group-item-action">
+                    <i class="ti ti-panel"></i>
+                    Kategorie
+                </a>
+                <a href="{{ path('post_index') }}" class="list-group-item list-group-item-action">
+                    <i class="ti ti-layout-list-post"></i>
+                    Artikel
+                </a>
+                <a href="{{ path('comment_index') }}" class="list-group-item list-group-item-action">
+                    <i class="ti ti-comment"></i>
+                    Kommentare
+                </a>
+                <a href="{{ path('main_menu_index') }}" class="list-group-item list-group-item-action">
+                    <i class="ti ti-menu"></i>
+                    Hauptmenü
+                </a>
+                <a href="{{ path('post_file_index') }}" class="list-group-item list-group-item-action">
+                    <i class="ti ti-menu"></i>
+                    Uploads
+                </a>
+                <a href="{{ path('image_index') }}" class="list-group-item list-group-item-action">
+                    <i class="ti ti-menu"></i>
+                    Bilder
+                </a>
+                <a href="{{ path('image_gallery_index') }}" class="list-group-item list-group-item-action">
+                    <i class="ti ti-menu"></i>
+                    Bilder Gallerien
+                </a>
+                <a href="{{ path('contact_index') }}" class="list-group-item list-group-item-action">
+                    <i class="ti ti-contact"></i>
+                    Kontaktanfragen
+                </a>
+                <a href="{{ path('states_index') }}" class="list-group-item list-group-item-action">
+                    <i class="ti ti-map"></i>
+                    Bundesländer
+                </a>
+                <a href="{{ path('flash_message_index') }}" class="list-group-item list-group-item-action">
+                    <i class="ti ti-message"></i>
+                    Flash Messages
+                </a>
+                <a href="{{ path('tag_index') }}" class="list-group-item list-group-item-action">
+                    <i class="ti ti-tag"></i>
+                    Tags
+                </a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -1,8 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}Image{% endblock %}
 
-{% block body %}
+{% block content %}
     <h1>Image</h1>
 
     <table class="table">
@@ -30,10 +30,6 @@
             <tr>
                 <th>ImageSize</th>
                 <td>{{ image.imageSize }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ image.updatedAt ? image.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Slug</th>

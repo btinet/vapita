@@ -1,0 +1,53 @@
+    <div class="position-sticky t-100">
+        {% if post.postFiles is not empty %}
+            <div class="row mt-3">
+                <div class="col">
+                    <h5>Dateien</h5>
+                    {% for file in post.postFiles %}
+                        {% set type = file.fileName|split('.') %}
+
+
+                        <table class="table table-sm mb-0">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <span class="mr-1 fiv-cla fiv-icon-{{ type|last }}"></span>
+                                    <a href="{{ vich_uploader_asset(file) }}" class="" download="{{ file.title }}.{{ type|last }}">
+                                        {{ file.title }}
+                                    </a>
+                                </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                        <p class="small">{{ file.description }}</p>
+
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        <div class="row mt-3">
+            <div class="col">
+                {% if post.imageGallery is not empty %}
+                    <h5>{{ post.imageGallery.title }}</h5>
+                    <div class="row gutters-sm">
+                        {% for image in post.imageGallery.images %}
+                            <div class="col-6">
+                                <a
+                                        href="{{ vich_uploader_asset(image) }}"
+                                        class="chocolat-image"
+                                        title="{{ image.title }}"
+                                >
+                                    <img
+                                            src="{{ vich_uploader_asset(image)| imagine_filter('admin_preview') }}"
+                                            alt="{{ image.title }}"
+                                            class="img-fluid mb-2"
+                                    >
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>

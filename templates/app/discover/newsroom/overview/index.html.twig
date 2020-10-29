@@ -6,89 +6,218 @@
 {% endblock %}
 
 {% block body_content %}
-    <section class="py-3">
-    </section>
-    <section class="fit py-5 mt-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 order-2 order-md-0">
-                    <a href="{{ path('app_show_post', {
-                        'category_slug': current_category.slug,
-                        'sub_category_slug': current_sub_category.slug,
-                        'post_slug': 'ressourcen'
+    <section class="fit bg-dark text-light">
+        <div class="container-xl">
+            <div class="row no-gutters">
+                <div class="col">
+                    {% if lead_post %}
+                        <div class="bg-secondary mx-auto">
+                            <img
+                                    src="{{ vich_uploader_asset(lead_post)|imagine_filter('story_lead') }}"
+                                    class="img-fluid d-none d-md-block"
+                                    alt="img"
+                            >
+                            <img
+                                    src="{{ vich_uploader_asset(lead_post)|imagine_filter('story_lead_mobile') }}"
+                                    class="img-fluid d-block d-md-none"
+                                    alt="img"
+                            >
+                            <div class="lead-story">
+                                <div class="py-3">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col">
 
-                    }) }}"
-
-                       class="btn btn-light d-block mb-2"
-                    >
-                        Download
-                    </a>
-                    <a href="#" class="btn btn-primary d-block mb-2">
-                        Individuelles Angebot
-                    </a>
-                    <p class="small">
-                        Du hast keine Lust, selbst zu programmieren? Wir entwickeln dein Projekt und begleiten dich in allen Belangen.
-                    </p>
-                </div>
-                <div class="col-12 col-md-9 order-1">
-                    <h3 class="">Ein einfaches PHP Framework</h3>
-                    <p>{{ current_post.description }}</p>
-                    {{ current_post.content|raw }}
+                                                <span class="">{{ lead_post.tags.title}} | {{ lead_post.created|date('d.m.Y') }}</span>
+                                                <h3 class="display-4 mb-0 d-none d-md-block">
+                                                    <a
+                                                            class="mt-auto stretched-link text-white"
+                                                            href="{{ path('app_show_sub_post', {
+                                                                'category_slug': current_category.slug,
+                                                                'sub_category_slug': current_sub_category.slug,
+                                                                'post_slug': lead_post.parent.slug,
+                                                                'sub_post_slug': lead_post.slug
+                                                            }) }}"
+                                                    >
+                                                        {{ lead_post.title }}
+                                                    </a>
+                                                </h3>
+                                                <h3 class="h4 font-weight-light mb-0 d-block d-md-none">
+                                                    <a
+                                                            class="mt-auto stretched-link text-white"
+                                                            href="{{ path('app_show_sub_post', {
+                                                                'category_slug': current_category.slug,
+                                                                'sub_category_slug': current_sub_category.slug,
+                                                                'post_slug': lead_post.parent.slug,
+                                                                'sub_post_slug': lead_post.slug
+                                                            }) }}"
+                                                    >
+                                                        {{ lead_post.title }}
+                                                    </a>
+                                                </h3>
+                                                <p class="lead  mb-0 d-none d-md-block">{{ lead_post.description }}</p>
+                                                <p class="mb-0 d-md-none d-block">{{ lead_post.description }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </section>
 
-    {% for post in current_sub_category.posts %}
-        {% if not post.islocalentry %}
-            <section class="fit py-5 mb-3 bg-lighter" id="child_posts">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 col-md-6 mb-4">
-                            <h4 class="">{{ post.title }}</h4>
-                            <p class="lead">{{ post.description }}</p>
-                            <a
-                                    href="{{ path('app_show_post', {
-                                            'category_slug': current_category.slug,
-                                            'sub_category_slug': current_sub_category.slug,
-                                            'post_slug': post.slug
-                                    }) }}"
-                                    class=""
-                                    >
-                                    {{ post.linktitle }}<i class="ml-1 fas fa-chevron-right"></i>
-                            </a>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            {% for child_post in post.posts %}
-                                <div class="media mb-1">
-                                    <img
-                                            src="{{ vich_uploader_asset(child_post) }}"
-                                            class="img-fluid mr-4"
-                                            alt="{{ child_post.imageName|default('') }}">
-                                    <div class="media-body">
-                                        <h6 class="mb-1">
-                                            <a
-                                                    href="{{ path('app_show_sub_post', {
-                                                        'category_slug': current_category.slug,
-                                                        'sub_category_slug': current_sub_category.slug,
-                                                        'post_slug': post.slug,
-                                                        'sub_post_slug': child_post.slug
-                                                    }) }}"
-                                                    class=""
-                                            >
-                                                {{ child_post.title }}
-                                            </a>
-                                        </h6>
-                                        <p class="">
-                                            {{ child_post.description }}
-                                        </p>
+    <section class="fit py-5 bg-black" id="storys">
+        <div class="container">
+            <a
+                    href="{{ path('app_show_post', {
+                        'category_slug': current_category.slug,
+                        'sub_category_slug': current_sub_category.slug,
+                        'post_slug': current_sub_category.posts[2].slug
+                    }) }}"
+                    class="h4 d-block mb-4 text-white-50 text-decoration-none"
+            >
+                Weitere Storys
+            </a>
+            <div id="fullpage">
+                <div class="section">
+                    <div class="slide">
+                        <div class="row">
+                            {% for post in current_sub_category.posts[2].posts %}
+                                {% if not post.isLeadStory  %}
+                                    <div class="col-12 col-md-4 align-self-stretch mb-3">
+                                        <div class="card h-100 mb-3 shadow  border text-light featured-story">
+                                            <div class="row h-100">
+                                                <div class="col h-100 d-flex flex-column">
+                                                    {% if post.imageName is not empty %}
+                                                        <img
+                                                                src="{{ vich_uploader_asset(post)|imagine_filter('story_featured_image_portrait') }}"
+                                                                class="img-fluid rounded"
+                                                                alt=""
+                                                        >
+                                                    {% endif %}
+                                                    <div class="featured-post">
+                                                        <div class="container">
+                                                            <div class="card-body pt-5 rounded-bottom d-flex flex-column justify-content-between">
+                                                                <div>
+                                                                    <h4 class="mb-1">{{ post.title }}</h4>
+                                                                    <span class="small mb-1 d-block text-uppercase">{{ post.created|date('d.m.Y') }}</span>
+                                                                    <p class="">{{ post.description }}</p>
+                                                                </div>
+                                                                <div>
+                                                                    <a
+                                                                            class="mt-auto stretched-link"
+                                                                            href="{{ path('app_show_sub_post', {
+                                                                                'category_slug': current_category.slug,
+                                                                                'sub_category_slug': current_sub_category.slug,
+                                                                                'post_slug': post.parent.slug,
+                                                                                'sub_post_slug': post.slug
+                                                                            }) }}"
+                                                                    >
+                                                                        mehr erfahren
+                                                                        <i class="fas fa-chevron-right ml-2"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </div>
                 </div>
-            </section>
-        {% endif %}
-    {% endfor %}
+            </div>
+
+            <a
+                    href="{{ path('app_show_post', {
+                        'category_slug': current_category.slug,
+                        'sub_category_slug': current_sub_category.slug,
+                        'post_slug': current_sub_category.posts[2].slug
+                    }) }}"
+                    class="h4 d-block my-3 text-white-50 text-decoration-none"
+            >
+                Alle Storys anzeigen
+            </a>
+        </div>
+    </section>
+    <section class="fit py-5" id="news">
+        <div class="container">
+            <a
+                    href="{{ path('app_show_post', {
+                        'category_slug': current_category.slug,
+                        'sub_category_slug': current_sub_category.slug,
+                        'post_slug': current_sub_category.posts[1].slug
+                    }) }}"
+                    class="h4 d-block mb-4 text-dark text-decoration-none"
+            >
+                Aktuelle News
+            </a>
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    {% for article in current_sub_category.posts[1].posts %}
+                        {% if loop.index <= 3 %}
+                            <div class="card shadow-sm mb-3">
+                                {% if article.imageName is not empty %}
+                                    <img
+                                            src="{{ vich_uploader_asset(article)|imagine_filter('story_post_image') }}"
+                                            alt="{{ article.title }}"
+                                            class="img-fluid rounded-top"
+                                    >
+                                {% endif %}
+                                <div class="card-body">
+                                    <span class="badge badge-light text-uppercase">{{ article.tag }}</span>
+                                    <h4>{{ article.title }}</h4>
+                                    <p>{{ article.description }}</p>
+                                    <p>
+                                        <a
+                                                href="{{ path('app_show_sub_post', {
+                                                    'category_slug': current_category.slug,
+                                                    'sub_category_slug': current_sub_category.slug,
+                                                    'post_slug': article.parent.slug,
+                                                    'sub_post_slug': article.slug
+                                                }) }}"
+                                                class="stretched-link"
+                                        >
+                                            {{ article.linkTitle }}
+                                            <i class="fas fa-chevron-right ml-2"></i>
+                                        </a>
+                                    </p>
+                                    <span>{{ article.created|ago }}</span>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-12 col-md-4">
+                    <h5 class="mb-3">Weitere News</h5>
+                    <div class="list-group shadow-sm  mb-3">
+                        {% for article in current_sub_category.posts[1].posts %}
+                            {% if loop.index > 3 %}
+                                <a
+                                        href="{{ path('app_show_sub_post', {
+                                            'category_slug': current_category.slug,
+                                            'sub_category_slug': current_sub_category.slug,
+                                            'post_slug': article.parent.slug,
+                                            'sub_post_slug': article.slug
+                                        }) }}"
+                                        class="list-group-item list-group-item-action"
+                                >
+                                    <span class="badge badge-light text-uppercase">{{ article.tag }}</span>
+                                    <h6 class="text-primary text-truncate my-1">{{ article.title }}</h6>
+                                    <span class="d-block small">{{ article.created|date('d.m.Y') }}</span>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 {% endblock %}

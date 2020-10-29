@@ -1,0 +1,21 @@
+.accordion{
+  .card{
+    .card-header{
+      background-color: $systemGray6;
+      a:hover{
+        text-decoration: none;
+      }
+    }
+    border-radius: 0;
+    border-top: 1px solid $systemGray5;
+  }
+  .card:last-child{
+    border-bottom: 1px solid $systemGray5;
+  }
+
+  .list-group-item{
+    padding-left: 2.25rem;
+    border-bottom: none;
+    background-color: $systemGray6;
+  }
+}

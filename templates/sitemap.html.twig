@@ -1,37 +1,31 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}
-    {{ parent() }}
-{% endblock %}
-
-{% block main_menu %}
-    {{ include('app/mainmenu.html.twig') }}
-{% endblock %}
-
-{% block body %}
-    <section class="py-3">
-    </section>
-    <section class="fit py-5 mt-3">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h3 class="">Willkommen</h3>
-                </div>
+<div class="container">
+    <div class="row py-3 small text-muted">
+        {% for item in main_menu %}
+            <div class="col-12 col-md">
+                <ul class="list-unstyled">
+                    <li class="font-weight-bold">
+                        {% if item.isCategory %}
+                            {% set url = path('app_show_category', {'category_slug': item.category.slug}) %}
+                        {% else %}
+                            {% set url = path(item.route) %}
+                        {% endif %}
+                        <a href="{{ url }}" class="text-muted">{{ item.title }}</a>
+                    </li>
+                    {% if item.isCategory %}
+                        {% for entry in item.category.categories %}
+                            <li class="mt-1">
+                                <a
+                                    href="{{ path('app_show_sub_category', {
+                                        'category_slug': item.category.slug,
+                                        'sub_category_slug': entry.slug
+                                    }) }}"
+                                    class="text-muted"
+                                >{{ entry.title }}</a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
             </div>
-        </div>
-    </section>
-    <section class="fit py-5 mt-3 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h3 class="">Willkommen</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-{% endblock %}
-
-{% block footer_additional_content %}
-    {{  }}
-{% endblock %}
+        {% endfor %}
+    </div>
+</div>

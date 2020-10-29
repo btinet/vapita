@@ -1,41 +1,29 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}Post index{% endblock %}
 
-{% block body %}
-    <h1>Post index</h1>
+{% block content %}
 
-    <table class="table">
+<div class="card">
+    <div class="card-header d-flex align-items-center justify-content-between">
+        <h4 class="mb-0">Post index</h4>
+        <a class="btn btn-secondary" href="{{ path('post_new') }}">Create new</a>
+    </div>
+    <table class="table table-sm table-responsive-md table-striped table-hover mb-0">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>MetaTitle</th>
-                <th>Description</th>
-                <th>MetaDescription</th>
-                <th>Content</th>
-                <th>Slug</th>
-                <th>Created</th>
-                <th>Updated</th>
-                <th>Link</th>
-                <th>LinkTitle</th>
-                <th>actions</th>
-            </tr>
+        <tr>
+            <th>Title</th>
+            <th>Kategorie</th>
+            <th>Parent Post</th>
+            <th>actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for post in posts %}
             <tr>
-                <td>{{ post.id }}</td>
                 <td>{{ post.title }}</td>
-                <td>{{ post.metaTitle }}</td>
-                <td>{{ post.description }}</td>
-                <td>{{ post.metaDescription }}</td>
-                <td>{{ post.content }}</td>
-                <td>{{ post.slug }}</td>
-                <td>{{ post.created ? post.created|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ post.updated ? post.updated|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ post.link }}</td>
-                <td>{{ post.linkTitle }}</td>
+                <td>{{ post.category }}</td>
+                <td>{{ post.parent }}</td>
                 <td>
                     <a href="{{ path('post_show', {'id': post.id}) }}">show</a>
                     <a href="{{ path('post_edit', {'id': post.id}) }}">edit</a>
@@ -48,6 +36,11 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class="card-footer">
+        <a class="btn btn-secondary" href="{{ path('post_new') }}">Create new</a>
+    </div>
+</div>
 
-    <a href="{{ path('post_new') }}">Create new</a>
+
+
 {% endblock %}

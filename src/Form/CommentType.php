@@ -16,9 +16,6 @@ class CommentType extends AbstractType
             ->add('author')
             ->add('content')
             ->add('email')
-            ->add('slug')
-            ->add('created')
-            ->add('updated')
             ->add('post')
         ;
     }

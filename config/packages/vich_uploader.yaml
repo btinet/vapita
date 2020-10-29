@@ -1,6 +1,43 @@
 vich_uploader:
     db_driver: orm
 
+    mappings:
+        post_image:
+            uri_prefix: /images/posts
+            upload_destination: '%kernel.project_dir%/public/images/posts'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        category_image:
+            uri_prefix: /images/categories
+            upload_destination: '%kernel.project_dir%/public/images/categories'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        upload_file:
+            uri_prefix: /downloads/files
+            upload_destination: '%kernel.project_dir%/public/downloads/files'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        gallery_image:
+            uri_prefix: /images/galleries
+            upload_destination: '%kernel.project_dir%/public/images/galleries'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
     #mappings:
     #    products:
     #        uri_prefix: /images/products

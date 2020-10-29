@@ -1,34 +1,43 @@
 <div class="row">
     <div class="col">
-        <h3 class="h3">{{ post.title }}</h3>
-        <p>{{ post.description }}</p>
-        <p>{{ post.created|date('d.m.Y') }}</p>
-        {% if post.imageName is not empty %}
-            <img
-                src="{{ vich_uploader_asset(post)|imagine_filter('story_post_image') }}"
-                alt="{{ post.title }}"
-                class="img-fluid rounded"
-            >
-        {% endif %}
-        <div class="mb-3"></div>
+        <h3 class="h3 mb-3">{{ post.title }}</h3>
     </div>
 </div>
 <div class="row">
     <div class="col">
-        {{ post.content|raw }}
-    </div>
-</div>
+        {% for article in post.posts %}
+            <div class="card shadow-sm mb-3">
+                {% if article.imageName is not empty %}
+                    <img
+                            src="{{ vich_uploader_asset(article)|imagine_filter('story_post_image') }}"
+                            alt="{{ article.title }}"
+                            class="img-fluid rounded-top"
+                    >
+                {% endif %}
+                <div class="card-body">
+                    <span class="badge badge-light text-uppercase">{{ article.tags.title }}</span>
+                    <h4>{{ article.title }}</h4>
+                    <p>{{ article.description }}</p>
+                    <p>
+                        <a
+                                href="{{ path('app_show_sub_post', {
+                                    'category_slug': current_category.slug,
+                                    'sub_category_slug': current_sub_category.slug,
+                                    'post_slug': current_post.slug,
+                                    'sub_post_slug': article.slug
+                                }) }}"
+                                class="stretched-link"
+                        >
+                            {{ article.linkTitle }}
+                            <i class="fas fa-chevron-right ml-2"></i>
+                        </a>
+                    </p>
+                    <span>{{ article.created|ago }}</span>
 
-<div class="row">
-    <div class="col">
-        {{ include('app/post_media.html.twig') }}
-    </div>
-</div>
-
-<div class="row">
-    <div class="col">
-            {{ include('app/post_navigator.html.twig') }}
-            {{ include('app/post_comments.html.twig') }}
+                </div>
+                <div class="hidden tags {{ article.tags.title|default('n/a') }}"></div>
+            </div>
+        {% endfor %}
     </div>
 </div>
 

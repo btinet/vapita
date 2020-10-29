@@ -1,8 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}PostFile index{% endblock %}
 
-{% block body %}
+{% block content %}
     <h1>PostFile index</h1>
 
     <table class="table">
@@ -13,11 +13,6 @@
                 <th>MetaTitle</th>
                 <th>Description</th>
                 <th>FileName</th>
-                <th>FileSize</th>
-                <th>UpdatedAt</th>
-                <th>Slug</th>
-                <th>Created</th>
-                <th>Updated</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -29,11 +24,6 @@
                 <td>{{ post_file.metaTitle }}</td>
                 <td>{{ post_file.description }}</td>
                 <td>{{ post_file.fileName }}</td>
-                <td>{{ post_file.fileSize }}</td>
-                <td>{{ post_file.updatedAt ? post_file.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ post_file.slug }}</td>
-                <td>{{ post_file.created ? post_file.created|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ post_file.updated ? post_file.updated|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('post_file_show', {'id': post_file.id}) }}">show</a>
                     <a href="{{ path('post_file_edit', {'id': post_file.id}) }}">edit</a>

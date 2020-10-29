@@ -19,22 +19,57 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
-    // /**
-    //  * @return Post[] Returns an array of Post objects
-    //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findByLikeSearch($value)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
+            ->orWhere('p.title LIKE :val')
+            ->orWhere('p.metaTitle LIKE :val')
+            ->orWhere('p.description LIKE :val')
+            ->orWhere('p.metaDescription LIKE :val')
+            ->orWhere('p.content LIKE :val')
+            ->setParameter('val', "%$value%")
             ->orderBy('p.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
+    public function getPreviousPost($id, $parent)
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p')
+
+            ->andWhere('p.parent = :parent')
+            ->andWhere('p.id < :id')
+            ->setParameter(':id', $id)
+            ->setParameter(':parent', $parent)
+            ->orderBy('p.id', 'DESC')
+            ->setFirstResult(0)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
+    public function getNextPost($id, $parent)
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p')
+
+            ->andWhere('p.parent = :parent')
+            ->andWhere('p.id > :id')
+            ->setParameter(':id', $id)
+            ->setParameter(':parent', $parent)
+            ->orderBy('p.id', 'ASC')
+            ->setFirstResult(0)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
 
     /*
     public function findOneBySomeField($value): ?Post

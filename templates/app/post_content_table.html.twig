@@ -1,29 +1,51 @@
-{% extends 'app.html.twig' %}
 
-{% block main_menu %}
-    {{ parent() }}
-    {{ include('app/local_menu.html.twig') }}
-{% endblock %}
-
-{% block body_content %}
-    <section class="py-3">
-    </section>
-    <section class="fit py-5 mt-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 d-none d-md-block">
-                    {{ include('app/post_content_table.html.twig') }}
-                </div>
-                <div class="col-12 col-md-9">
-                    {# Inhalt des Posts #}
-                    {% if current_sub_post is defined %}
-                        {% set post = current_sub_post %}
-                    {% else %}
-                        {% set post = current_post %}
+    <ul class="list-unstyled  post-content-table{{ custom_css|default('') }}">
+        {% for cat_post in current_sub_category.posts  %}
+            {% if not cat_post.isLocalEntry %}
+                <li>
+                    {% if current_post.slug == cat_post.slug %}
+                        {% set active = 'font-weight-bold' %}
+                        {% else %}
+                            {% set active = '' %}
                     {% endif %}
-                    {{ include('app/post_content.html.twig') }}
-                </div>
-            </div>
-        </div>
-    </section>
-{% endblock %}
+                    <a
+                            href="{{ path('app_show_post', {
+                                'category_slug': cat_post.category.parent.slug,
+                                'sub_category_slug': cat_post.category.slug,
+                                'post_slug': cat_post.slug
+                            }) }}"
+
+                            class="{{ active|default('') }}"
+                    >
+                        <i class="fas fa-chevron-right mr-1"></i>
+                        {{ cat_post.title }}
+                    </a>
+                    <ul class="list-unstyled">
+                        {% for cat_sub_post in cat_post.posts|sort((a, b) => a.created <=> b.created) %}
+                            {% if current_sub_post.slug is defined %}
+                                {% if current_sub_post.slug == cat_sub_post.slug %}
+                                    {% set post_active = 'font-weight-bold' %}
+                                {% else %}
+                                    {% set post_active = '' %}
+                                {% endif %}
+                            {% endif %}
+                            <li class="">
+                                <a
+                                        href="{{ path('app_show_sub_post', {
+                                            'category_slug': cat_post.category.parent.slug,
+                                            'sub_category_slug': cat_post.category.slug,
+                                            'post_slug': cat_post.slug,
+                                            'sub_post_slug': cat_sub_post.slug
+                                        }) }}"
+
+                                        class="{{ post_active|default('') }}"
+                                >
+                                    {{ cat_sub_post.title }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>

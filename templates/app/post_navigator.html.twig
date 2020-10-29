@@ -1,11 +1,40 @@
-<div class="row">
-    <div class="col">
-        <h3 class="">{{ post.title }}</h3>
-        <p>{{ post.description }}</p>
-    </div>
-</div>
-<div class="row">
-    <div class="col">
-        {{ post.content|raw }}
+<div class="row mt-5">
+    <div class="col-12 d-flex flex-md-row flex-column justify-content-md-between justify-content-center align-items-md-center align-items-start">
+        <span>
+            {% if previous_post|default(false) %}
+                <a href="{{ path('app_show_sub_post', {
+                    'category_slug': current_category.slug,
+                    'sub_category_slug': current_sub_category.slug,
+                    'post_slug': current_post.slug,
+                    'sub_post_slug': previous_post.slug
+                }) }}"
+
+                   class="post-navigator"
+                >
+                    <i class="fas fa-chevron-left mr-1"></i>
+                    Zuvor
+                    <h4 class="text-truncate">{{ previous_post.title|slice(0,26) }}{% if previous_post.title|length > 26 %}...{% endif %}</h4>
+                </a>
+            {% endif %}
+        </span>
+        <span>
+            {% if next_post|default(false) %}
+                <a href="{{ path('app_show_sub_post', {
+                    'category_slug': current_category.slug,
+                    'sub_category_slug': current_sub_category.slug,
+                    'post_slug': current_post.slug,
+                    'sub_post_slug': next_post.slug
+                }) }}"
+
+                   class="post-navigator d-flex flex-column align-items-md-end align-items-start"
+                >
+                    <span>
+                        Als nächstes
+                    <i class="fas fa-chevron-right ml-1"></i>
+                    </span>
+                    <h4 class="text-truncate">{{ next_post.title|slice(0,26) }}{% if next_post.title|length > 26 %}...{% endif %}</h4>
+                </a>
+            {% endif %}
+        </span>
     </div>
 </div>

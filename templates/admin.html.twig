@@ -1,47 +1,76 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1, maximum-scale=1">
+    <title>{% block title %}{{ controller_name ?? '' }} | {{ app_title ?? "n/a" }}{% endblock %}</title>
+    {% block opengraph %}{% endblock %}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('admin') }}
+    {% endblock %}
+</head>
+<body class="py-5">
 
-{% block title %}Category index{% endblock %}
+{% block header %}
 
-{% block body %}
-    <h1>Category index</h1>
+    {% set currentPath = path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
+    <div class="container-fluid mb-5">
+        <div class="nav nav-tabs">
+            <a class="nav-item nav-link {{ path('admin') == currentPath ? 'active' }}" href="{{ path('admin') }}">Home</a>
+            <a class="nav-item nav-link {{ path('post_index') == currentPath ? 'active' }}" href="{{ path('post_index') }}">Post</a>
+            <a class="nav-item nav-link {{ path('category_index') == currentPath ? 'active' }}" href="{{ path('category_index') }}">Category</a>
+            <a class="nav-item nav-link {{ path('image_index') == currentPath ? 'active' }}" href="{{ path('image_index') }}">Images</a>
+        </div>
+    </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>MetaTitle</th>
-                <th>Description</th>
-                <th>MeteDescription</th>
-                <th>Slug</th>
-                <th>Created</th>
-                <th>Updated</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.title }}</td>
-                <td>{{ category.metaTitle }}</td>
-                <td>{{ category.description }}</td>
-                <td>{{ category.meteDescription }}</td>
-                <td>{{ category.slug }}</td>
-                <td>{{ category.created ? category.created|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ category.updated ? category.updated|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('category_new') }}">Create new</a>
 {% endblock %}
+
+<!--begin::Body-->
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+<!--end::Body-->
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('admin') }}
+
+    <script src="{{ asset('legacy/tinymce/tinymce.min.js') }}"></script>
+
+
+    <script type="text/javascript">
+        tinymce.init({
+            selector: '.tinymce',
+            plugins: 'anchor table codesample media link image imagetools visualblocks code charmap lists',
+            toolbar: 'codesample anchor link image visualblocks code charmap numlist bullist',
+            codesample_languages: [
+                { text: 'HTML/XML', value: 'markup' },
+                { text: 'JavaScript', value: 'javascript' },
+                { text: 'CSS', value: 'css' },
+                { text: 'PHP', value: 'php' },
+                { text: 'Ruby', value: 'ruby' },
+                { text: 'Python', value: 'python' },
+                { text: 'Java', value: 'java' },
+                { text: 'C', value: 'c' },
+                { text: 'C#', value: 'csharp' },
+                { text: 'C++', value: 'cpp' },
+                { text: 'Shell', value: 'shell' },
+                { text: 'Bash', value: 'bash'}
+            ],
+            relative_urls : false,
+            remove_script_host : true,
+            document_base_url: '{{ app.request.getSchemeAndHttpHost() }}'
+        });
+
+
+
+    </script>
+
+{% endblock %}
+</body>
+</html>

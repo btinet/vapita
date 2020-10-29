@@ -1,29 +1,43 @@
-<div class="row py-3 small text-muted">
-    {% for item in main_menu %}
-        <div class="col-12 col-md">
-            <ul class="list-unstyled">
-                <li class="font-weight-bold">
-                    {% if item.isCategory %}
-                        {% set url = path('app_show_category', {'category_slug': item.category.slug}) %}
-                    {% else %}
-                        {% set url = path(item.route) %}
-                    {% endif %}
-                    <a href="{{ url }}" class="text-muted">{{ item.title }}</a>
-                </li>
+<div class="py-3 text-muted ml-0">
+
+            <div class="accordion" id="sitemap-accordion">
+                {% for item in main_menu %}
+
                 {% if item.isCategory %}
-                    {% for entry in item.category.categories %}
-                        <li>
-                            <a
-                                href="{{ path('app_show_sub_category', {
-                                    'category_slug': item.category.slug,
-                                    'sub_category_slug': entry.slug
-                                }) }}"
-                                class="text-muted"
-                            >{{ entry.title }}</a>
-                        </li>
-                    {% endfor %}
+                {% set url = path('app_show_category', {'category_slug': item.category.slug}) %}
+                {% else %}
+                {% set url = path(item.route) %}
                 {% endif %}
-            </ul>
-        </div>
-    {% endfor %}
+
+                    <div class="card">
+                        <div class="card-header py-0" id="heading-{{ item.id }}">
+
+                                <a href="{% if not item.isCategory %}{{ url }}{% endif %}" class="py-2 d-block text-dark text-left" data-toggle="collapse" data-target="#collapse-{{ item.id }}" aria-expanded="false" aria-controls="collapse-{{ item.id }}">
+                                    {{ item.title }}
+                                </a>
+
+                        </div>
+
+                        <div id="collapse-{{ item.id }}" class="collapse" aria-labelledby="#heading-{{ item.id }}"  data-parent="#sitemap-accordion">
+                            <div class="list-group list-group-flush">
+                                {% if item.isCategory %}
+                                    {% for entry in item.category.categories %}
+
+                                            <a
+                                                    href="{{ path('app_show_post', {
+                                                        'category_slug': item.category.slug,
+                                                        'sub_category_slug': entry.slug,
+                                                        'post_slug': entry.posts|first.slug
+                                                    }) }}"
+                                                    class="py-2 list-group-item list-group-item-action"
+                                            >{{ entry.title }}</a>
+
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
 </div>
