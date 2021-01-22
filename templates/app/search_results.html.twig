@@ -12,7 +12,7 @@
         >
             <h6 class="text-primary">{{ result.title }}</h6>
             <p class="mb-0">{{ result.description }}</p>
-            <span class="badge badge-light text-muted text-uppercase font-weight-normal">{{ result.title }}</span>
+            <span class="badge badge-light text-muted text-uppercase font-weight-normal">{{ result.parent.category.title }}</span>
         </a>
         {% else %}
             <a
@@ -25,7 +25,7 @@
             >
                 <h6 class="text-primary">{{ result.title }}</h6>
                 <p class="mb-0">{{ result.description }}</p>
-                <span class="badge badge-light text-muted text-uppercase font-weight-normal">{{ result.title }}</span>
+                <span class="badge badge-light text-muted text-uppercase font-weight-normal">{{ result.category.title }}</span>
             </a>
         {% endif %}
     {% endfor %}

@@ -3,153 +3,167 @@
 }) }}
     <div class="row">
         <div class="col-12 col-md-8">
+            <div class="position-sticky" style="top:1.4rem">
+                <fieldset>
+                    <legend>Allgemein</legend>
+                    <div class="form-group row">
+                        {{ form_label(form.title) }}
+                        <div class="col-md-8">
+                            {{ form_widget(form.title) }}
+                        </div>
+                        {{ form_help(form.title) }}
+                        <div class="col-md-2">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        {{ form_label(form.content) }}
+                        <div class="col-md-8">
+                            {{ form_widget(form.content) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        {{ form_label(form.description) }}
+                        <div class="col-md-8">
+                            {{ form_widget(form.description) }}
+                        </div>
+                        {{ form_help(form.description) }}
+                    </div>
+                </fieldset>
 
-            <div class="form-group row">
-                {{ form_label(form.title) }}
-                <div class="col-md-10">
-                    {{ form_widget(form.title) }}
-                </div>
-                {{ form_help(form.title) }}
-            </div>
-
-            <div class="mb-3">
-                {{ form_widget(form.content) }}
-            </div>
-
-            <div class="form-group row">
-                {{ form_label(form.metaTitle) }}
-                <div class="col-md-10">
-                    {{ form_widget(form.metaTitle) }}
-                </div>
-                {{ form_help(form.metaTitle) }}
-            </div>
-
-            <div class="form-group row">
-                {{ form_label(form.description) }}
-                <div class="col-md-10">
-                    {{ form_widget(form.description) }}
-                </div>
-                {{ form_help(form.description) }}
-            </div>
-
-            <div class="form-group row">
-                {{ form_label(form.metaDescription) }}
-                <div class="col-md-10">
-                    {{ form_widget(form.metaDescription) }}
-                </div>
-                {{ form_help(form.metaDescription) }}
-            </div>
-
-            <div class="form-group row">
-                {{ form_label(form.tags) }}
-                <div class="col-md-8">
-                    {{ form_widget(form.tags) }}
-                </div>
-                <div class="col-md-2">
-                    <a
-                            href="{{ path('tag_new') }}"
-                            target="_blank"
-                            class="btn btn-block btn-secondary font-weight-bolder"
-                    >
-                        Neu
-                    </a>
-                </div>
+                <fieldset>
+                    <legend>Meta Daten</legend>
+                    <div class="form-group row">
+                        {{ form_label(form.metaTitle) }}
+                        <div class="col-md-8">
+                            {{ form_widget(form.metaTitle) }}
+                        </div>
+                        {{ form_help(form.metaTitle) }}
+                    </div>
+                    <div class="form-group row">
+                        {{ form_label(form.metaDescription) }}
+                        <div class="col-md-8">
+                            {{ form_widget(form.metaDescription) }}
+                        </div>
+                        {{ form_help(form.metaDescription) }}
+                    </div>
+                    <div class="form-group row">
+                        {{ form_label(form.tags) }}
+                        <div class="col-md-8">
+                            {{ form_widget(form.tags) }}
+                        </div>
+                        <div class="col-md-2">
+                            <a
+                                    href="{{ path('tag_new') }}"
+                                    target="_blank"
+                                    class="btn btn-block btn-primary font-weight-bolder"
+                            >
+                                Neu
+                            </a>
+                        </div>
+                    </div>
+                </fieldset>
             </div>
         </div>
         <div class="col-12 col-md-4">
 
-            <button
-                    type="submit"
-                    form="form"
-                    class="btn btn-primary font-weight-bolder px-5 btn-block mb-3"
-            >
-                {{ button_label|default('Speichern') }}
-            </button>
+            <fieldset>
+                <legend>Kategorie und Post</legend>
+                <div class="form-group row">
+                    {{ form_label(form.category) }}
+                    <div class="col-md-9">
+                        {{ form_widget(form.category) }}
+                    </div>
+                    {{ form_help(form.category) }}
+                </div>
+                <div class="form-group row">
+                    {{ form_label(form.parent) }}
+                    <div class="col-md-9">
+                        {{ form_widget(form.parent) }}
+                    </div>
+                    {{ form_help(form.parent) }}
+                </div>
+                <div class="form-group row">
+                    {{ form_label(form.linkTitle) }}
+                    <div class="col-md-9">
+                        {{ form_widget(form.linkTitle) }}
+                    </div>
+                    {{ form_help(form.linkTitle) }}
+                </div>
+                <div class="form-group row">
+                    {{ form_label(form.link) }}
+                    <div class="col-md-9">
+                        {{ form_widget(form.link) }}
+                    </div>
+                    {{ form_help(form.link) }}
+                </div>
+            </fieldset>
 
-
-                    <div class="form-group row mb-3">
-
+            <fieldset>
+                <legend>Featured Image</legend>
+                    <div class="form-group row">
                         <div class="col-md-12">
                             {{ form_widget(form.imageFile) }}
                         </div>
                         {{ form_help(form.imageFile) }}
                     </div>
-                    <div class="form-group row">
-                        {{ form_label(form.imageGallery) }}
-                        <div class="col-md-7">
-                            {{ form_widget(form.imageGallery) }}
-                        </div>
-                        {{ form_help(form.imageGallery) }}
-                    </div>
+            </fieldset>
 
-            <hr>
-
-                    <div class="form-group row">
-                        {{ form_label(form.category) }}
-                        <div class="col-md-9">
-                                {{ form_widget(form.category) }}
-                        </div>
-                        {{ form_help(form.category) }}
-                    </div>
-
-                    <div class="form-group row">
-                        {{ form_label(form.parent) }}
-                        <div class="col-md-9">
-                            {{ form_widget(form.parent) }}
-                        </div>
-                        {{ form_help(form.parent) }}
-                    </div>
-                    <hr>
-                    <div class="mb-3">
-                        <div style="margin-left: .7rem">{{ form_label(form.isLocalEntry) }}</div>
-                        {{ form_widget(form.isLocalEntry) }}
-                        {{ form_help(form.isLocalEntry) }}
-                    </div>
-                    <div class="mb-3">
-                        <div style="margin-left: .7rem">{{ form_label(form.isLeadStory) }}</div>
-                        {{ form_widget(form.isLeadStory) }}
-                        {{ form_help(form.isLeadStory) }}
-                    </div>
-                    <div class="mb-3">
-                        <div style="margin-left: .7rem">{{ form_label(form.hasContentTable) }}</div>
-                        {{ form_widget(form.hasContentTable) }}
-                        {{ form_help(form.hasContentTable) }}
-                    </div>
-                    <div class="mb-3">
-                        <div style="margin-left: .7rem">{{ form_label(form.hasTemplate) }}</div>
-                        {{ form_widget(form.hasTemplate) }}
-                        {{ form_help(form.hasTemplate) }}
-                    </div>
-                    <div class="form-group row">
-                        {{ form_label(form.template) }}
-                        <div class="col-md-9">
-                            {{ form_widget(form.template) }}
-                        </div>
-                        {{ form_help(form.template) }}
-                    </div>
-                    <div class="form-group row">
-                        {{ form_label(form.linkTitle) }}
-                        <div class="col-md-9">
-                            {{ form_widget(form.linkTitle) }}
-                        </div>
-                        {{ form_help(form.linkTitle) }}
-                    </div>
-                    <div class="form-group row">
-                        {{ form_label(form.link) }}
-                        <div class="col-md-9">
-                            {{ form_widget(form.link) }}
-                        </div>
-                        {{ form_help(form.link) }}
-                    </div>
-                    <div class="form-group row">
-                        {{ form_label(form.postFiles) }}
-                        <div class="col-md-9">
-                            {{ form_widget(form.postFiles) }}
-                        </div>
-                        {{ form_help(form.postFiles) }}
-                    </div>
+            <fieldset>
+                <legend>Einstellungen</legend>
+                <div class="mb-3">
+                    <div style="margin-left: .7rem">{{ form_label(form.isLocalEntry) }}</div>
+                    {{ form_widget(form.isLocalEntry) }}
+                    {{ form_help(form.isLocalEntry) }}
                 </div>
-            </div>
+                <div class="mb-3">
+                    <div style="margin-left: .7rem">{{ form_label(form.isVisible) }}</div>
+                    {{ form_widget(form.isVisible) }}
+                    {{ form_help(form.isVisible) }}
+                </div>
+                <div class="mb-3">
+                    <div style="margin-left: .7rem">{{ form_label(form.isLeadStory) }}</div>
+                    {{ form_widget(form.isLeadStory) }}
+                    {{ form_help(form.isLeadStory) }}
+                </div>
+                <div class="mb-3">
+                    <div style="margin-left: .7rem">{{ form_label(form.hasContentTable) }}</div>
+                    {{ form_widget(form.hasContentTable) }}
+                    {{ form_help(form.hasContentTable) }}
+                </div>
+                <div class="mb-3">
+                    <div style="margin-left: .7rem">{{ form_label(form.hasTemplate) }}</div>
+                    {{ form_widget(form.hasTemplate) }}
+                    {{ form_help(form.hasTemplate) }}
+                </div>
+                <div class="form-group row">
+                    {{ form_label(form.template) }}
+                    <div class="col-md-9">
+                        {{ form_widget(form.template) }}
+                    </div>
+                    {{ form_help(form.template) }}
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Medien</legend>
+                <div class="form-group row">
+                    {{ form_label(form.imageGallery) }}
+                    <div class="col-md-9">
+                        {{ form_widget(form.imageGallery) }}
+                    </div>
+                    {{ form_help(form.imageGallery) }}
+                </div>
+                <div class="form-group row">
+                    {{ form_label(form.postFiles) }}
+                    <div class="col-md-9">
+                        {{ form_widget(form.postFiles) }}
+                    </div>
+                    {{ form_help(form.postFiles) }}
+                </div>
+            </fieldset>
+
+        </div>
+    </div>
 
 
 {{ form_end(form) }}

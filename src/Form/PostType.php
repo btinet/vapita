@@ -23,8 +23,8 @@ class PostType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 'row_attr' => ['class' => 'row'],
-                'attr' => ['class' => 'form-control-lg'],
-                'label_attr' => ['class' => 'col-md-2 col-form-label col-form-label-lg'],
+                'attr' => ['class' => ''],
+                'label_attr' => ['class' => 'col-md-2 col-form-label'],
                 'help_attr' => ['class' => 'col-12'],
             ])
             ->add('metaTitle', TextType::class, [
@@ -59,6 +59,11 @@ class PostType extends AbstractType
                 'label_attr' => ['class' => 'switch-custom'],
                 'required' => false,
                 'help' => 'Zeigt den Post auch im lokaen Menü, sofern er einer direkten Kategorie angehört.'
+            ])
+            ->add('isVisible', CheckboxType::class, [
+                'label_attr' => ['class' => 'switch-custom'],
+                'required' => false,
+                'help' => 'Zeigt den Post auch in der Kategorieübersicht, sofern er einer direkten Kategorie angehört.'
             ])
             ->add('hasContentTable', CheckboxType::class, [
                 'label_attr' => ['class' => 'switch-custom'],
@@ -105,6 +110,7 @@ class PostType extends AbstractType
                 'attr' => [
                     'class' => 'tinymce min-height-800',
                 ],
+                'label_attr' => ['class' => 'col-md-2 col-form-label'],
                 'required' => false
             ])
             ->add('isLeadStory', CheckboxType::class, [
@@ -140,7 +146,7 @@ class PostType extends AbstractType
                 'class' => ImageGallery::class,
                 'attr' => ['class' => 'custom-select'],
                 'row_attr' => ['class' => 'row'],
-                'label_attr' => ['class' => 'col-md-5 col-form-label'],
+                'label_attr' => ['class' => 'col-md-3 col-form-label'],
                 'placeholder' => 'Image Gallery wählen...',
                 'required' => false,
             ])

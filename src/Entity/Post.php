@@ -183,6 +183,16 @@ class Post
      */
     private $tags;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isArchived;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isVisible;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
@@ -555,6 +565,30 @@ class Post
     public function setTags(?Tag $tags): self
     {
         $this->tags = $tags;
+
+        return $this;
+    }
+
+    public function getIsArchived(): ?bool
+    {
+        return $this->isArchived;
+    }
+
+    public function setIsArchived(?bool $isArchived): self
+    {
+        $this->isArchived = $isArchived;
+
+        return $this;
+    }
+
+    public function getIsVisible(): ?bool
+    {
+        return $this->isVisible;
+    }
+
+    public function setIsVisible(?bool $isVisible): self
+    {
+        $this->isVisible = $isVisible;
 
         return $this;
     }

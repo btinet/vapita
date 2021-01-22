@@ -14,6 +14,18 @@
 
   a{
     color: map-get($theme-colors, 'dark');
+    .vapita-logo{
+      fill: map-get($theme-colors, 'dark');
+      transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+      -webkit-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+      -moz-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+      -o-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+
+
+
+
     transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
     -webkit-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
     -moz-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -21,12 +33,17 @@
   }
   a:hover{
     color: lighten(map-get($theme-colors, 'dark'),20);
+    .vapita-logo{
+      fill: lighten(map-get($theme-colors, 'dark'),20);
+    }
+
   }
   .navbar-brand{
     font-weight: 500;
   }
   .active{
     color: lighten(map-get($theme-colors, 'dark'),20);
+
   }
 }
 
@@ -38,9 +55,19 @@
     -webkit-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
     -moz-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
     -o-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    .vapita-logo{
+      fill: darken(map-get($theme-colors, 'light'),20);
+      transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+      -webkit-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+      -moz-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+      -o-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
   }
   a:hover{
     color: darken(map-get($theme-colors, 'light'),10);
+    .vapita-logo{
+      fill: darken(map-get($theme-colors, 'light'),10);
+    }
   }
   .navbar-brand{
     font-weight: 500;
@@ -70,6 +97,21 @@
 
   }
 }
+
+
+  a .vapita-logo{
+    fill: darken(map-get($theme-colors, 'secondary'),0);
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -webkit-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -moz-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -o-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+
+  a:hover .vapita-logo{
+    fill: darken(map-get($theme-colors, 'secondary'),0);
+  }
+
 
 .local-nav{
   z-index: 7;
@@ -201,7 +243,7 @@ width: auto;
 }
 
 .search-result-wrapper{
-  height: subtract(100vh,116px);
+  height: subtract(100vh,200px);
   -ms-overflow-y: auto;
   overflow-y: auto;
   overflow-scrolling: touch;

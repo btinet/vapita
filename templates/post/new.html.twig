@@ -3,9 +3,29 @@
 {% block title %}New Post{% endblock %}
 
 {% block content %}
-    <h1>Create new Post</h1>
-
-    {{ include('post/_form.html.twig') }}
-
-    <a href="{{ path('post_index') }}">back to list</a>
+    <div class="card bg-light">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <h4 class="font-weight-normal my-0">Artikel erstellen</h4>
+                <div class="d-flex align-items-center">
+                    <button
+                            type="submit"
+                            form="form"
+                            class="btn btn-primary font-weight-bolder px-5"
+                    >
+                        {{ button_label|default('Speichern') }}
+                    </button>
+                    <a
+                            href="{{ path('post_index') }}"
+                            class="btn btn-light font-weight-bolder px-5 ml-3"
+                    >
+                        Zurück
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            {{ include('post/_form.html.twig', {'button_label': 'Speichern'}) }}
+        </div>
+    </div>
 {% endblock %}

@@ -9,34 +9,27 @@
         {{ encore_entry_link_tags('admin') }}
     {% endblock %}
 </head>
-<body class="py-5">
+<body style="padding: 1rem 0">
 
-{% block header %}
-
-    {% set currentPath = path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
-    <div class="container-fluid mb-5">
-        <div class="nav nav-tabs">
-            <a class="nav-item nav-link {{ path('admin') == currentPath ? 'active' }}" href="{{ path('admin') }}">Home</a>
-            <a class="nav-item nav-link {{ path('post_index') == currentPath ? 'active' }}" href="{{ path('post_index') }}">Post</a>
-            <a class="nav-item nav-link {{ path('category_index') == currentPath ? 'active' }}" href="{{ path('category_index') }}">Category</a>
-            <a class="nav-item nav-link {{ path('image_index') == currentPath ? 'active' }}" href="{{ path('image_index') }}">Images</a>
-        </div>
-    </div>
-
-{% endblock %}
-
-<!--begin::Body-->
-{% block body %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                {% block content %}{% endblock %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                {% block header %}
+                    <div class="card-header">
+                        <a href="{{ url('admin') }}" class="btn btn-primary font-weight-bolder">Administration</a>
+                        <a href="{{ url('app_logout') }}" class="btn btn-danger font-weight-bolder">Abmelden</a>
+                    </div>
+                {% endblock %}
+                {% block body %}
+                    <div class="card-body">
+                        {% block content %}{% endblock %}
+                    </div>
+                {% endblock %}
             </div>
         </div>
     </div>
-{% endblock %}
-<!--end::Body-->
-
+</div>
 {% block javascripts %}
     {{ encore_entry_script_tags('admin') }}
 
