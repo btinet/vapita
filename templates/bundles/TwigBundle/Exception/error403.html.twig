@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="fit py-3 bg-global-nav">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12">
+                    <h4 class="display-4">Fehler 403</h4>
+                    <p class="lead">Du verfügst nicht über die erforderlichen Rechte, um auf diese Seite zuzugreifen.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="fit py-5 mb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h3 class="h2 mb-5">Vapita durchsuchen</h3>
+                    <form class="mb-3" action="{{ path('app_show_post', {
+                        'category_slug': 'discover',
+                        'sub_category_slug': 'suche',
+                        'post_slug': 'vapita-durchsuchen'
+                    }) }}" method="post">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <input type="search" class="form-control form-control-lg" id="search_global" name="search" placeholder="{{ app.request.get('search')|default('Suchen') }}">
+
+                            <label for="search_global">
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fit py-5 mb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="lead">Oder kehre zur <a href="{{ path('app_index') }}" class="font-weight-bolder">Zur Startseite</a> zurück, um von vorn zu beginnen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
