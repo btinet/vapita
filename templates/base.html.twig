@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml" lang="de">
 <head>
     <meta charset="UTF-8">
     {% set controller_name = controller_name|default('Fehler') %}
@@ -27,6 +27,7 @@
         <meta property="og:type" content="Website">
         <meta property="og:site_name" content="Vapita">
         <meta property="og:url" content="{{ app.request.uri }}">
+        <meta property="fb:app_id" content="2827939947307832"/>
     {% endblock %}
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
