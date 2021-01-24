@@ -1,36 +1,19 @@
-{% extends 'app.html.twig' %}
 
 {% block body_content %}
-    {% if current_category.flashMessages is not empty %}
-        {% for message in current_category.flashMessages %}
-            <section class="py-3 flash-message-{{ message.color }}">
-                <div class="container">
-                    <div class="d-flex justify-content-center align-items-center">
-                        <a
-                                href="{{ absolute_url(message.path) }}"
-                                class=""
-                        >
-                            {{ message.title }}
-                        </a>
-                    </div>
-                </div>
-            </section>
-        {% endfor %}
-    {% endif %}
     <section class="fit py-3">
         <div class="container">
             <div class="row">
 
-                    <div class="col-12 col-md-6">
-                        <h4 class="text-primary">File not Found</h4>
-                        <p class="lead">Try it wo other</p>
-                        <a
-                                href=""
-                                class="btn btn-link"
-                        >
-                            Weiterlesen <i class="fi-arrow-right"></i>
-                        </a>
-                    </div>
+                <div class="col-12 col-md-6">
+                    <h4 class="text-primary">File not Found</h4>
+                    <p class="lead">Try it wo other</p>
+                    <a
+                            href=""
+                            class="btn btn-link"
+                    >
+                        Weiterlesen <i class="fi-arrow-right"></i>
+                    </a>
+                </div>
 
             </div>
         </div>
