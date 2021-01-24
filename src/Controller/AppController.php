@@ -41,17 +41,22 @@ class AppController extends AbstractController
 
     /**
      * @Route("/{category_slug}", name="show_category")
-     * @ParamConverter("category", options={"mapping": {"category_slug": "slug"}})
-     * @param Category $category
+     * @param $category_slug
      * @return Response
      */
-    public function showCategory(Category $category)
+    public function showCategory($category_slug)
     {
 
         $mainMenuRepository = $this->getDoctrine()->getRepository('App:MainMenu');
         $mainMenu = $mainMenuRepository->findAll();
 
         $categoryRepository = $this->getDoctrine()->getRepository('App:Category');
+        $category = $categoryRepository->findOneBy([
+           'slug' => $category_slug
+        ]);
+
+        if(!$category){throw $this->createNotFoundException('The product does not exist');};
+
         $subCategories = $categoryRepository->findBy([
             'parent' => $category
         ]);
