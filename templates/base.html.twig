@@ -13,7 +13,7 @@
         {% else %}
             {% set post = current_category %}
         {% endif %}
-        {% if post.imageFile %}
+        {% if post.imageName %}
             <meta property="og:image" content="{{ vich_uploader_asset(post)|imagine_filter('story_lead') }}">
         {% endif %}
         <meta property="og:title" content="{{ post.metaTitle }}">
