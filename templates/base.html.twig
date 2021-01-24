@@ -19,8 +19,10 @@
         <meta property="og:title" content="{{ post.metaTitle }}">
         {% if post.metaDescription is defined %}
             <meta property="og:description" content="{{ post.metaDescription }}">
+            <meta name="description" content="{{ post.metaDescription }}"/>
         {% else %}
             <meta property="og:description" content="{{ post.meteDescription }}">
+            <meta name="description" content="{{ post.meteDescription }}"/>
         {% endif %}
         <meta property="og:type" content="Website">
         <meta property="og:site_name" content="Vapita">
