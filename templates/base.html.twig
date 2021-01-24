@@ -2,9 +2,30 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    {% set controller_name = controller_name|default('Fehler') %}
     <meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1, maximum-scale=1">
     <title>{% block title %}{{ controller_name|trans }} | {{ app_title ?? "Vapita" }}{% endblock %}</title>
-    {% block opengraph %}{% endblock %}
+    {% block opengraph %}
+        {% if current_sub_post is defined %}
+            {% set post = current_sub_post %}
+        {% elseif current_post is defined %}
+            {% set post = current_post %}
+        {% else %}
+            {% set post = current_category %}
+        {% endif %}
+        {% if post.imageFile %}
+            <meta property="og:image" content="{{ vich_uploader_asset(post)|imagine_filter('story_lead') }}">
+        {% endif %}
+        <meta property="og:title" content="{{ post.metaTitle }}">
+        {% if post.metaDescription is defined %}
+            <meta property="og:description" content="{{ post.metaDescription }}">
+        {% else %}
+            <meta property="og:description" content="{{ post.meteDescription }}">
+        {% endif %}
+        <meta property="og:type" content="Website">
+        <meta property="og:site_name" content="Vapita">
+        <meta property="og:url" content="{{ app.request.uri }}">
+    {% endblock %}
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
