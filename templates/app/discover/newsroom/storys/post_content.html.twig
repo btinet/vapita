@@ -32,7 +32,10 @@
                             <i class="fas fa-chevron-right ml-2"></i>
                         </a>
                     </p>
-                    <span>{{ article.created|ago }}</span>
+                    <span>
+                        {{ article.created|ago }}
+                        <small>({{ article.updated|ago }} aktualisiert)</small>
+                    </span>
                 </div>
                 <div class="hidden tags {{ article.tags.title|default('n/a') }}"></div>
             </div>
