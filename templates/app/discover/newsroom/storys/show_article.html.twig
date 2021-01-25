@@ -24,7 +24,7 @@
                             <p>{{ post.description }}</p>
                             <p>
                                 {{ post.created|date('d.m.Y') }}
-                                <small>({{ article.updated|ago }} aktualisiert)</small>
+                                <small>({{ post.updated|ago }} aktualisiert)</small>
                             </p>
                             {% if post.imageName is not empty %}
                                 <img
