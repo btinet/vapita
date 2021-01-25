@@ -22,7 +22,10 @@
                         <div class="col">
                             <h3 class="h3">{{ post.title }}</h3>
                             <p>{{ post.description }}</p>
-                            <p>{{ post.created|date('d.m.Y') }}</p>
+                            <p>
+                                {{ post.created|date('d.m.Y') }}
+                                <small>({{ article.updated|ago }} aktualisiert)</small>
+                            </p>
                             {% if post.imageName is not empty %}
                                 <img
                                         src="{{ vich_uploader_asset(post)|imagine_filter('story_post_image') }}"
