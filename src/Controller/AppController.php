@@ -230,7 +230,7 @@ class AppController extends AbstractController
         $nextPost = $postRepository->getNextPost($currentSubPost->getId(),$currentSubPost->getParent());
 
         $template = ($currentSubPost->getHasTemplate())
-            ? $category->getSlug().$currentSubPost->getTemplate()
+            ? $currentSubPost->getTemplate()
             : 'show_post.html.twig';
 
         return $this->render('app/' . $template, [
