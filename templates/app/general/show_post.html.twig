@@ -1,0 +1,50 @@
+{% extends 'app.html.twig' %}
+
+{% block main_menu %}
+    {{ parent() }}
+    {{ include('app/local_menu.html.twig') }}
+{% endblock %}
+
+{% block body_content %}
+    <section class="py-3">
+    </section>
+    <section class="fit py-5 mt-3">
+        <div class="container">
+            <div class="row">
+                {% if current_post.hasContentTable %}
+                    <div class="col-md-4 d-none d-md-block">
+                        <div class="position-sticky t-100">
+                            {{ include('app/post_content_table.html.twig') }}
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-8">
+                {% else %}
+                        <div class="col-12">
+                {% endif %}
+                    {# Inhalt des Posts #}
+                    {% if current_sub_post is defined %}
+                        {% set post = current_sub_post %}
+                    {% else %}
+                        {% set post = current_post %}
+                    {% endif %}
+
+                    {{ include('app/general/post_content.html.twig') }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    {{ include('app/post_navigator.html.twig') }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    {{ include('app/post_media.html.twig') }}
+                </div>
+                <div class="col-12 col-md-8">
+                    {{ include('app/post_comments.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
