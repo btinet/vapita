@@ -43,7 +43,7 @@
                             {% for child_post in post.posts|sort((a, b) => a.created <=> b.created) %}
                                 <div class="media mb-1">
                                     <img
-                                            src="{{ vich_uploader_asset(child_post) }}"
+                                            src="{{ vich_uploader_asset(child_post)|imagine_filter("post_100_100") }}"
                                             class="img-fluid mr-4"
                                             alt="{{ child_post.imageName|default('') }}">
                                     <div class="media-body">
