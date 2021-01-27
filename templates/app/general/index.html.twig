@@ -24,7 +24,7 @@
     </section>
 
     {% for post in current_sub_category.posts %}
-        {% if not post.islocalentry %}
+        {% if post.isVisible %}
             <section class="fit py-5 mb-3 bg-lighter" id="child_posts">
                 <div class="container">
                     <div class="row">
