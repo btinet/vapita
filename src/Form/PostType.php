@@ -31,6 +31,12 @@ class PostType extends AbstractType
                 'row_attr' => ['class' => 'row'],
                 'label_attr' => ['class' => 'col-md-2 col-form-label'],
             ])
+            ->add('tag', TextType::class, [
+                'row_attr' => ['class' => 'row'],
+                'attr' => ['class' => ''],
+                'label_attr' => ['class' => 'col-md-2 col-form-label'],
+                'help_attr' => ['class' => 'col-12'],
+            ])
             ->add('tags', EntityType::class, [
                 'class' => Tag::class,
                 'placeholder' => 'Tags...',

@@ -15,6 +15,7 @@
             <caption>{{ post.metaTitle }}</caption>
             <thead>
             <tr>
+                <th>Typ</th>
                 <th>Marke</th>
                 <th>Produkt</th>
                 <th>Datum</th>
@@ -25,6 +26,7 @@
                 {% for driver in post.posts %}
                     <tr>
                         <td>{{ driver.tag }}</td>
+                        <td>{{ driver.tags }}</td>
                         <td>{{ driver.title }}</td>
                         <td>{{ driver.created|ago }}</td>
                     </tr>

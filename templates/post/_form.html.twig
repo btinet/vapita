@@ -47,6 +47,15 @@
                         {{ form_help(form.metaDescription) }}
                     </div>
                     <div class="form-group row">
+                        {{ form_label(form.tag) }}
+                        <div class="col-md-8">
+                            {{ form_widget(form.tag) }}
+                        </div>
+                        {{ form_help(form.tag) }}
+                        <div class="col-md-2">
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         {{ form_label(form.tags) }}
                         <div class="col-md-8">
                             {{ form_widget(form.tags) }}
