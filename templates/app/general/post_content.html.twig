@@ -11,42 +11,44 @@
 </div>
 <div class="row">
     <div class="col">
-        <table class="table table-striped table-sm">
-            <caption>{{ post.metaTitle }}</caption>
-            <thead>
-            <tr>
-                <th>Produkt</th>
-                <th>Marke</th>
-                <th>Typ</th>
-                <th>Datum</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% if post.posts %}
-                {% for driver in post.posts %}
-                    <tr>
-                        <td>
-                            <a href="{{ path('app_show_sub_post', {
-                                'category_slug': current_category.slug,
-                                'sub_category_slug':current_sub_category.slug,
-                                'post_slug': current_post.slug,
-                                'sub_post_slug':driver.slug
-                            }) }}">
-                                {{ driver.title }}
-                            </a>
-                        </td>
-                        <td>{{ driver.tags }}</td>
-                        <td>{{ driver.tag }}</td>
-                        <td>{{ driver.created|ago }}</td>
-                    </tr>
-                {% endfor %}
-            {% else %}
+        <div class="card">
+            <table class="table table-striped table-sm">
+                <caption>{{ post.metaTitle }}</caption>
+                <thead>
                 <tr>
-                    <td colspan="3">Keine Ergebnisse</td>
+                    <th>Produkt</th>
+                    <th>Marke</th>
+                    <th>Typ</th>
+                    <th>Datum</th>
                 </tr>
-            {% endif %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% if post.posts %}
+                    {% for driver in post.posts %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('app_show_sub_post', {
+                                    'category_slug': current_category.slug,
+                                    'sub_category_slug':current_sub_category.slug,
+                                    'post_slug': current_post.slug,
+                                    'sub_post_slug':driver.slug
+                                }) }}">
+                                    {{ driver.title }}
+                                </a>
+                            </td>
+                            <td>{{ driver.tags }}</td>
+                            <td>{{ driver.tag }}</td>
+                            <td>{{ driver.created|ago }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="3">Keine Ergebnisse</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <div class="row">
