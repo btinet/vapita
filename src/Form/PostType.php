@@ -32,6 +32,7 @@ class PostType extends AbstractType
                 'label_attr' => ['class' => 'col-md-2 col-form-label'],
             ])
             ->add('tag', TextType::class, [
+                'required' => false,
                 'row_attr' => ['class' => 'row'],
                 'attr' => ['class' => ''],
                 'label_attr' => ['class' => 'col-md-2 col-form-label'],
