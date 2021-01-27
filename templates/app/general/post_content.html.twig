@@ -27,7 +27,16 @@
                     <tr>
                         <td>{{ driver.tag }}</td>
                         <td>{{ driver.tags }}</td>
-                        <td>{{ driver.title }}</td>
+                        <td>
+                            <a href="{{ path('app_show_sub_post', {
+                                'category_slug': current_category.slug,
+                                'sub_category_slug':current_sub_category.slug,
+                                'post_slug': current_post.slug,
+                                'sub_post_slug':driver.slug
+                            }) }}">
+                                {{ driver.title }}
+                            </a>
+                        </td>
                         <td>{{ driver.created|ago }}</td>
                     </tr>
                 {% endfor %}
