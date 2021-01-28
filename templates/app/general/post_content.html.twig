@@ -11,7 +11,7 @@
 </div>
 <div class="row">
     <div class="col">
-        <div class="table-responsive">
+        <div class="table-responsive-md">
             <table class="table table-borderless table-striped table-sm">
                 <caption>{{ post.metaTitle }}</caption>
                 <thead>
@@ -26,7 +26,7 @@
                 {% if post.posts %}
                     {% for driver in post.posts %}
                         <tr>
-                            <td>
+                            <td class="text-nowrap">
                                 <a href="{{ path('app_show_sub_post', {
                                     'category_slug': current_category.slug,
                                     'sub_category_slug':current_sub_category.slug,
@@ -36,9 +36,9 @@
                                     {{ driver.title }}
                                 </a>
                             </td>
-                            <td class="text">{{ driver.tags }}</td>
-                            <td>{{ driver.tag }}</td>
-                            <td>{{ driver.created|ago }}</td>
+                            <td class="text-nowrap">{{ driver.tags }}</td>
+                            <td class="text-nowrap">{{ driver.tag }}</td>
+                            <td class="text-nowrap">{{ driver.created|ago }}</td>
                         </tr>
                     {% endfor %}
                 {% else %}
