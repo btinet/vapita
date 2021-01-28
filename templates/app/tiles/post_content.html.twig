@@ -3,10 +3,11 @@
         <h3 class="h3">{{ post.title }}</h3>
     </div>
 </div>
-<div class="row">
+<div class="row align-items-stretch">
         {% for article in post.posts %}
             <div class="col-12 col-md-4">
-                <div class="card shadow-sm mb-3">
+                <div class="card shadow-sm mb-3 h-100">
+                    {#
                     {% if article.imageName is not empty %}
                         <img
                                 src="{{ vich_uploader_asset(article)|imagine_filter('post_100_100') }}"
@@ -14,6 +15,7 @@
                                 class="img-fluid rounded-top"
                         >
                     {% endif %}
+                    #}
                     <div class="card-body">
                         <span class="badge badge-light text-uppercase">{{ article.tags.title }}</span>
                         <h4>{{ article.title }}</h4>
