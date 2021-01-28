@@ -23,20 +23,18 @@
                             <p>{{ article.description }}</p>
                         </div>
                         <div>
-                            <p>
-                                <a
-                                        href="{{ path('app_show_sub_post', {
-                                            'category_slug': current_category.slug,
-                                            'sub_category_slug': current_sub_category.slug,
-                                            'post_slug': current_post.slug,
-                                            'sub_post_slug': article.slug
-                                        }) }}"
-                                        class="stretched-link"
-                                >
-                                    {{ article.linkTitle }}
-                                    <i class="fas fa-chevron-right ml-2"></i>
-                                </a>
-                            </p>
+                            <a
+                                    href="{{ path('app_show_sub_post', {
+                                        'category_slug': current_category.slug,
+                                        'sub_category_slug': current_sub_category.slug,
+                                        'post_slug': current_post.slug,
+                                        'sub_post_slug': article.slug
+                                    }) }}"
+                                    class="stretched-link"
+                            >
+                                {{ article.linkTitle }}
+                                <i class="fas fa-chevron-right ml-2"></i>
+                            </a>
                         </div>
                     </div>
                     <div class="hidden tags {{ article.tags.title|default('n/a') }}"></div>
