@@ -4,7 +4,7 @@
     </div>
 </div>
 <div class="row gutters-sm align-items-stretch">
-        {% for article in post.posts %}
+        {% for article in post.posts|sort((a, b) => a.title <=> b.title) %}
             <div class="col-12 col-sm-6 col-md-4 mb-2">
                 <div class="card shadow-sm h-100">
                     {#
