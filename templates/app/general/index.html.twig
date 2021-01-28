@@ -24,6 +24,8 @@
         {% if post.isVisible %}
             {% if post.isLeadStory %}
                 {% set postBackground = "bg-lighter" %}
+                {% else %}
+                    {% set postBackground = "" %}
             {% endif %}
             <section class="fit py-5 mb-3 {{ postBackground|default('') }}" id="child_posts">
                 <div class="container">
