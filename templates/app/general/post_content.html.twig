@@ -11,7 +11,7 @@
 </div>
 <div class="row">
     <div class="col">
-        <div class="table-responsive-md">
+        <div class="table-responsive">
             <table class="table table-borderless table-striped table-sm">
                 <caption>{{ post.metaTitle }}</caption>
                 <thead>
@@ -36,7 +36,7 @@
                                     {{ driver.title }}
                                 </a>
                             </td>
-                            <td>{{ driver.tags }}</td>
+                            <td class="text">{{ driver.tags }}</td>
                             <td>{{ driver.tag }}</td>
                             <td>{{ driver.created|ago }}</td>
                         </tr>
