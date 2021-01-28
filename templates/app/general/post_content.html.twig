@@ -24,7 +24,7 @@
                 </thead>
                 <tbody>
                 {% if post.posts %}
-                    {% for driver in post.posts %}
+                    {% for driver in post.posts|sort((a, b) => a.title <=> b.title) %}
                         <tr>
                             <td class="text-nowrap">
                                 <a href="{{ path('app_show_sub_post', {
@@ -38,7 +38,7 @@
                             </td>
                             <td class="text-nowrap">{{ driver.tags }}</td>
                             <td class="text-nowrap">{{ driver.tag }}</td>
-                            <td class="text-nowrap">{{ driver.created|ago }}</td>
+                            <td class="text-nowrap">{{ driver.created|date('d.m.Y') }}</td>
                         </tr>
                     {% endfor %}
                 {% else %}
