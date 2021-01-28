@@ -22,11 +22,18 @@
 
     {% for post in current_sub_category.posts %}
         {% if post.isVisible %}
-            <section class="fit py-5 mb-3 bg-lighter" id="child_posts">
+            {% if post.isLeadStory %}
+                {% set postBackground = "bg-lighter" %}
+            {% endif %}
+            <section class="fit py-5 mb-3 {{ postBackground|default('') }}" id="child_posts">
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-md-6 mb-4">
-                            <h4 class="">{{ post.title }}</h4>
+                            {% if post.isLeadStory %}
+                                <h3 class="">{{ post.title }}</h3>
+                                {% else %}
+                                    <h4 class="">{{ post.title }}</h4>
+                            {% endif %}
                             <p class="lead">{{ post.description }}</p>
                             <a
                                     href="{{ path('app_show_post', {
