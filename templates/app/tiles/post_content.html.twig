@@ -16,28 +16,32 @@
                         >
                     {% endif %}
                     #}
-                    <div class="card-body">
-                        <span class="badge badge-light text-uppercase">{{ article.tags.title }}</span>
-                        <h4>{{ article.title }}</h4>
-                        <p>{{ article.description }}</p>
-                        <p>
-                            <a
-                                    href="{{ path('app_show_sub_post', {
-                                        'category_slug': current_category.slug,
-                                        'sub_category_slug': current_sub_category.slug,
-                                        'post_slug': current_post.slug,
-                                        'sub_post_slug': article.slug
-                                    }) }}"
-                                    class="stretched-link"
-                            >
-                                {{ article.linkTitle }}
-                                <i class="fas fa-chevron-right ml-2"></i>
-                            </a>
-                        </p>
-                        <span>
-                            {{ article.created|ago }}
-                            <small>({{ article.updated|ago }} aktualisiert)</small>
-                        </span>
+                    <div class="card-body d-flex flex-row justify-content-between">
+                        <div>
+                            <span class="badge badge-light text-uppercase">{{ article.tags.title }}</span>
+                            <h4>{{ article.title }}</h4>
+                            <p>{{ article.description }}</p>
+                        </div>
+                        <div>
+                            <p>
+                                <a
+                                        href="{{ path('app_show_sub_post', {
+                                            'category_slug': current_category.slug,
+                                            'sub_category_slug': current_sub_category.slug,
+                                            'post_slug': current_post.slug,
+                                            'sub_post_slug': article.slug
+                                        }) }}"
+                                        class="stretched-link"
+                                >
+                                    {{ article.linkTitle }}
+                                    <i class="fas fa-chevron-right ml-2"></i>
+                                </a>
+                            </p>
+                            <span>
+                                {{ article.created|ago }}
+                                <small>({{ article.updated|ago }} aktualisiert)</small>
+                            </span>
+                        </div>
                     </div>
                     <div class="hidden tags {{ article.tags.title|default('n/a') }}"></div>
                 </div>
