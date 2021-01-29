@@ -32,10 +32,7 @@ class CategoryType extends AbstractType
             ->add('redirectToPost')
             ->add('isDarkLocalMenu')
             ->add('isShown')
-            ->add('isLead', CheckboxType::class, [
-                'label'    => 'Show this entry publicly?',
-                'required' => false,
-            ])
+            ->add('isLead')
             ->add('description')
             ->add('meteDescription')
             ->add('parent', EntityType::class, [
