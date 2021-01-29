@@ -16,6 +16,11 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class Category
 {
+    /**
+     * @var ArrayCollection
+     */
+    private $mainMenus;
+
     public function __toString()
     {
         return $this->title;
