@@ -29,11 +29,9 @@ class CategoryType extends AbstractType
                 'imagine_pattern' => 'admin_preview',
                 'asset_helper' => true,
             ])
-
             ->add('redirectToPost')
             ->add('isDarkLocalMenu')
             ->add('isShown')
-            ->add('isLead')
             ->add('description')
             ->add('meteDescription')
             ->add('parent', EntityType::class, [
