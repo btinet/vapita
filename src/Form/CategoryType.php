@@ -4,8 +4,10 @@ namespace App\Form;
 
 use App\Entity\Category;
 use App\Entity\FlashMessage;
+use Doctrine\DBAL\Types\BooleanType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -30,7 +32,7 @@ class CategoryType extends AbstractType
             ->add('redirectToPost')
             ->add('isDarkLocalMenu')
             ->add('isShown')
-            ->add('isLead')
+            ->add('isLead', BooleanType::class)
             ->add('description')
             ->add('meteDescription')
             ->add('parent', EntityType::class, [
