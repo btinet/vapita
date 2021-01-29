@@ -140,6 +140,7 @@ class Category
      */
     private $isLead;
 
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
