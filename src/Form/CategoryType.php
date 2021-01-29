@@ -29,6 +29,7 @@ class CategoryType extends AbstractType
                 'imagine_pattern' => 'admin_preview',
                 'asset_helper' => true,
             ])
+
             ->add('redirectToPost')
             ->add('isDarkLocalMenu')
             ->add('isShown')
