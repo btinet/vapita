@@ -48,7 +48,7 @@
     {% for category in sub_categories %}
         {% if  category.isShown %}
             {% set categoryBackground = '' %}
-            {% if category.isLead is 1 %}
+            {% if category.isLead %}
                 {% set categoryBackground = 'bg-light' %}
             {% endif %}
             <section class="fit py-5 mb-3 {{ categoryBackground }}">
