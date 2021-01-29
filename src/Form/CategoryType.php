@@ -30,6 +30,7 @@ class CategoryType extends AbstractType
             ->add('redirectToPost')
             ->add('isDarkLocalMenu')
             ->add('isShown')
+            ->add('isLead')
             ->add('description')
             ->add('meteDescription')
             ->add('parent', EntityType::class, [
