@@ -31,7 +31,7 @@ class CategoryType extends AbstractType
             ])
             ->add('redirectToPost')
             ->add('isDarkLocalMenu')
-            ->add('isLead', CheckboxType::class)
+            ->add('isLead')
             ->add('isShown')
             ->add('description')
             ->add('meteDescription')
