@@ -31,6 +31,7 @@ class CategoryType extends AbstractType
             ])
             ->add('redirectToPost')
             ->add('isDarkLocalMenu')
+            ->add('isLead')
             ->add('isShown')
             ->add('description')
             ->add('meteDescription')
