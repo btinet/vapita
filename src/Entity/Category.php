@@ -135,6 +135,11 @@ class Category
      */
     private $isShown;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isLead;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -400,6 +405,18 @@ class Category
     public function setIsShown(?bool $isShown): self
     {
         $this->isShown = $isShown;
+
+        return $this;
+    }
+
+    public function getIsLead(): ?bool
+    {
+        return $this->isLead;
+    }
+
+    public function setIsLead(?bool $isLead): self
+    {
+        $this->isLead = $isLead;
 
         return $this;
     }
