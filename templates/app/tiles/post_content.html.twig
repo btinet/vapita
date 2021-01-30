@@ -7,7 +7,7 @@
     <div class="col-12">
         <div class="card shadow-sm">
             <div class="list-group list-group-flush">
-                {% if post.posts|length >= 0 %}
+                {% if post.posts|length > 0 %}
                     {% for article in post.posts|sort((a, b) => a.title <=> b.title) %}
                         {#
                         {% if article.imageName is not empty %}
@@ -25,10 +25,15 @@
                                     'post_slug': current_post.slug,
                                     'sub_post_slug': article.slug
                                 }) }}"
-                                class="list-group-item list-group-item-action"
+                                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
                         >
-                            <h5 class="mb-0">{{ article.title }}</h5>
-                            <p class="small mb-0">{{ article.description }}</p>
+                            <div>
+                                <h5 class="mb-0">{{ article.title }}</h5>
+                                <p class="small mb-0">{{ article.description }}</p>
+                            </div>
+                            <span>
+                                <i class="fas fa-chevron-right"></i>
+                            </span>
                         </a>
                         <div class="hidden tags {{ article.tags.title|default('n/a') }}"></div>
                     {% endfor %}
