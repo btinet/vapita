@@ -23,7 +23,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% if post.posts %}
+                {% if post.posts|length > 0 %}
                     {% for driver in post.posts|sort((a, b) => a.title <=> b.title) %}
                         <tr>
                             <td class="text-nowrap">
