@@ -33,10 +33,11 @@
                         <div class="col-12 col-md-6 mb-4">
                             {% if post.isLeadStory %}
                                 <h3 class="">{{ post.title }}</h3>
+                                <p class="lead">{{ post.description }}</p>
                                 {% else %}
                                     <h4 class="">{{ post.title }}</h4>
+                                    <p class="">{{ post.description }}</p>
                             {% endif %}
-                            <p class="lead">{{ post.description }}</p>
                             <a
                                     href="{{ path('app_show_post', {
                                             'category_slug': current_category.slug,
