@@ -51,30 +51,32 @@
                         </div>
                         <div class="col-12 col-md-6">
                             {% for child_post in post.posts|sort((a, b) => a.created <=> b.created) %}
-                                <div class="media mb-1">
-                                    <img
-                                            src="{{ vich_uploader_asset(child_post) }}"
-                                            class="img-fluid mr-4" style="max-width: 100px"
-                                            alt="{{ child_post.imageName|default('') }}">
-                                    <div class="media-body">
-                                        <h6 class="mb-1">
-                                            <a
-                                                    href="{{ path('app_show_sub_post', {
-                                                        'category_slug': current_category.slug,
-                                                        'sub_category_slug': current_sub_category.slug,
-                                                        'post_slug': post.slug,
-                                                        'sub_post_slug': child_post.slug
-                                                    }) }}"
-                                                    class=""
-                                            >
-                                                {{ child_post.title }}
-                                            </a>
-                                        </h6>
-                                        <p class="">
-                                            {{ child_post.description }}
-                                        </p>
+                                {% if child_post.isVisible %}
+                                    <div class="media mb-1">
+                                        <img
+                                                src="{{ vich_uploader_asset(child_post) }}"
+                                                class="img-fluid mr-4" style="max-width: 100px"
+                                                alt="{{ child_post.imageName|default('') }}">
+                                        <div class="media-body">
+                                            <h6 class="mb-1">
+                                                <a
+                                                        href="{{ path('app_show_sub_post', {
+                                                            'category_slug': current_category.slug,
+                                                            'sub_category_slug': current_sub_category.slug,
+                                                            'post_slug': post.slug,
+                                                            'sub_post_slug': child_post.slug
+                                                        }) }}"
+                                                        class=""
+                                                >
+                                                    {{ child_post.title }}
+                                                </a>
+                                            </h6>
+                                            <p class="">
+                                                {{ child_post.description }}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </div>
