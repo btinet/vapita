@@ -3,32 +3,24 @@
             <div class="row mt-3">
                 <div class="col">
                     <h5>Dateien</h5>
-                    {% for file in post.postFiles %}
-                        {% set type = file.fileName|split('.') %}
-
-
-                        <table class="table table-sm mb-0">
-                            <tbody>
-                            <tr>
-                                <td>
+                    <div class="card shadow-sm">
+                        <div class="list-group list-group-flush">
+                            {% for file in post.postFiles %}
+                                {% set type = file.fileName|split('.') %}
+                                <a href="{{ vich_uploader_asset(file) }}" class="list-group-item list-group-item-action" download="{{ file.title }}.{{ type|last }}">
                                     <span class="mr-1 fiv-cla fiv-icon-{{ type|last }}"></span>
-                                    <a href="{{ vich_uploader_asset(file) }}" class="" download="{{ file.title }}.{{ type|last }}">
-                                        {{ file.title }}
-                                    </a>
-                                </td>
-
-                            </tr>
-                            </tbody>
-                        </table>
-                        <p class="small">{{ file.description }}</p>
-
-                    {% endfor %}
+                                    <span class="text-primary">{{ file.title }}</span>
+                                    <p class="small mb-0">{{ file.description }}</p>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
             </div>
         {% endif %}
-        <div class="row mt-3">
-            <div class="col">
-                {% if post.imageGallery is not empty %}
+        {% if post.imageGallery is not empty %}
+            <div class="row mt-3">
+                <div class="col">
                     <h5>{{ post.imageGallery.title }}</h5>
                     <div class="row gutters-sm">
                         {% for image in post.imageGallery.images %}
@@ -47,7 +39,7 @@
                             </div>
                         {% endfor %}
                     </div>
-                {% endif %}
+                </div>
             </div>
-        </div>
+        {% endif %}
     </div>
