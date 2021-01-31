@@ -23,7 +23,6 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <title>{% block title %}{{ controller_name|trans }} | {{ app_title ?? "Vapita" }}{% endblock %}</title>
     {% block opengraph %}
         {% set op = true %}
         {% if current_sub_post is defined %}
@@ -35,6 +34,8 @@
             {% else %}
             {% set op = false %}
         {% endif %}
+
+        <title>{% block title %}{{ post.metaTitle|default('Mediengestaltung für Bild, Ton und Print') }} | {{ app_title ?? "Vapita" }}{% endblock %}</title>
 
         {% if op %}
             {% if post.imageName %}
