@@ -162,7 +162,7 @@ class PostType extends AbstractType
                 'row_attr' => ['class' => 'row'],
                 'label_attr' => ['class' => 'col-md-3 col-form-label'],
                 'help_attr' => ['class' => 'col-12'],
-                'by_reference' => true,
+                'by_reference' => false,
                 'required' => false,
                 'multiple' => true
             ])
