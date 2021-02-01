@@ -119,6 +119,14 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/maker-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/apache-pack" />
+      <excludeFolder url="file://$MODULE_DIR$/public/media" />
+      <excludeFolder url="file://$MODULE_DIR$/assets/scss/themes" />
+      <excludeFolder url="file://$MODULE_DIR$/assets/css" />
+      <excludeFolder url="file://$MODULE_DIR$/assets/images" />
+      <excludeFolder url="file://$MODULE_DIR$/assets/js" />
+      <excludeFolder url="file://$MODULE_DIR$/assets/legacy" />
+      <excludeFolder url="file://$MODULE_DIR$/var" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

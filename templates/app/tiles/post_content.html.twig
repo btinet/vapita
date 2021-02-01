@@ -10,13 +10,7 @@
                 {% if post.posts|length > 0 %}
                     {% for article in post.posts|sort((a, b) => a.title <=> b.title) %}
                         {#
-                        {% if article.imageName is not empty %}
-                            <img
-                                    src="{{ vich_uploader_asset(article)|imagine_filter('post_100_100') }}"
-                                    alt="{{ article.title }}"
-                                    class="img-fluid rounded-top"
-                            >
-                        {% endif %}
+
                         #}
                         <a
                                 href="{{ path('app_show_sub_post', {
@@ -27,9 +21,18 @@
                                 }) }}"
                                 class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
                         >
-                            <div>
-                                <h6 class="mb-0">{{ article.title }}</h6>
-                                <p class="small mb-0">{{ article.description }}</p>
+                            <div class="d-flex justify-content-start align-items-center">
+                                {% if article.imageName is not empty %}
+                                    <img
+                                            src="{{ vich_uploader_asset(article)|imagine_filter('post_24_24') }}"
+                                            alt="{{ article.title }}"
+                                            class="img-fluid mr-2"
+                                    >
+                                {% endif %}
+                                <div>
+                                    <h6 class="mb-0">{{ article.title }}</h6>
+                                    <p class="small mb-0">{{ article.description }}</p>
+                                </div>
                             </div>
                             <span>
                                 <i class="fas fa-chevron-right"></i>
