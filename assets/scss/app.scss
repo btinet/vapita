@@ -289,8 +289,16 @@ form label.required:after
   width: 100%;
   box-sizing: border-box;
   .card-body{
-    background: rgb(54,54,54);
-    background: linear-gradient(0deg, rgba(0,0,0,1) 30%, rgba(54,54,54,0.8) 80%, rgba(54,54,54,0) 100%);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px); background-color: rgba(54,54,54,.6);
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -webkit-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -moz-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -o-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+  .card-body:hover{
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(0%) blur(20px); background-color: rgba(54,54,54,.6);
   }
   p, h4{
     text-shadow: 0 0 2px rgba(12,14,26,0.6);
