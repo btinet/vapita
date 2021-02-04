@@ -2,11 +2,6 @@
 
 {% block title %}Edit PostFile{% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" integrity="sha256-e47xOkXs1JXFbjjpoRr1/LhVcqSzRmGmPqsrUQeVs+g=" crossorigin="anonymous" />
-{% endblock %}
-
 {% block content %}
     <h1>Edit PostFile</h1>
 
@@ -15,9 +10,4 @@
     <a href="{{ path('post_file_index') }}">back to list</a>
 
     {{ include('post_file/_delete_form.html.twig') }}
-{% endblock %}
-
-{% block javascripts %}
-{{ parent() }}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js" integrity="sha256-cs4thShDfjkqFGk5s2Lxj35sgSRr4MRcyccmi0WKqCM=" crossorigin="anonymous"></script>
 {% endblock %}
