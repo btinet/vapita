@@ -23,4 +23,14 @@
             </div>
         </div>
     </section>
+    <script type="application/javascript">
+        (function () {
+            'use strict'
+            var images = document.querySelectorAll('img')
+            Array.prototype.slice.call(images)
+                .forEach(function (image) {
+                    image.classList.add('img-fluid')
+                })
+        })()
+    </script>
 {% endblock %}
